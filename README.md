@@ -1,4 +1,4 @@
-![Icon](https://raw.githubusercontent.com/dittodhole/dotnet-Contrib.System.CheckSum/develop/assets/noun_1117655_cc.png)
+![](assets/noun_1117655_cc.png)
 
 # dotnet-Contrib.System.CheckSum
 > Calculate, store, and verify checksums on various occasions.
