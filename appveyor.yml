@@ -14,7 +14,7 @@ build:
   project: '%solution_dir%\%project_name%.sln'
 after_build:
 - cmd: nuget pack "%solution_dir%\%project_name%\%project_name%.csproj" -properties "Configuration=%configuration%" -symbols
-- cmd: nuget pack "%solution_dir%\%project_name%\Source.%project_name%.csproj" -properties "Configuration=%configuration%"
+- cmd: nuget pack "%solution_dir%\%project_name%\Source.%project_name%.nuspec" -properties "Configuration=%configuration%"
 - cmd: appveyor PushArtifact "%root_dir%\%project_name%.%GitVersion_NuGetVersionV2%.nupkg"
 - cmd: appveyor PushArtifact "%root_dir%\%project_name%.%GitVersion_NuGetVersionV2%.symbols.nupkg"
 - cmd: appveyor PushArtifact "%root_dir%\Source.%project_name%.%GitVersion_NuGetVersionV2%.nupkg"
