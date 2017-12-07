@@ -44,6 +44,7 @@
     <Compile Include="StringCheckSumCalculator.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Source.Contrib.System.CheckSum.nuspec" />
     <None Include="Contrib.System.CheckSum.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
