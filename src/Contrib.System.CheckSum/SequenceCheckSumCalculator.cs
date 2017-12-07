@@ -1,12 +1,12 @@
 ﻿/** @pp
- * rootnamespace: System.Contrib
+ * rootnamespace: Contrib.System
  */
-namespace System.Contrib.CheckSum
+namespace Contrib.System.CheckSum
 {
-  using System;
-  using System.Collections;
-  using System.Text;
-  using JetBrains.Annotations;
+  using global::System;
+  using global::System.Collections;
+  using global::System.Text;
+  using global::JetBrains.Annotations;
 
   public partial class SequenceCheckSumCalculator : ICheckSumCalculator<IEnumerable>
   {

@@ -1,10 +1,10 @@
 ﻿/** @pp
- * rootnamespace: System.Contrib
+ * rootnamespace: Contrib.System
  */
-namespace System.Contrib.CheckSum
+namespace Contrib.System.CheckSum
 {
-  using System;
-  using JetBrains.Annotations;
+  using global::System;
+  using global::JetBrains.Annotations;
 
   public partial interface ICheckSumCalculator<T>
   {
