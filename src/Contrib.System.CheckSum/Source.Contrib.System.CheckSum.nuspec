@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>$id$</id>
+    <id>Source.$id$</id>
     <version>$version$</version>
-    <authors>$author$</authors>
+    <authors>Andreas Niedermair (@dittodhole)</authors>
     <licenseUrl>https://raw.githubusercontent.com/dittodhole/WTFNMFPLv3/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/dittodhole/dotnet-Contrib.System.CheckSum</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/dittodhole/dotnet-Contrib.System.CheckSum/develop/assets/noun_1117655_cc.png</iconUrl>
