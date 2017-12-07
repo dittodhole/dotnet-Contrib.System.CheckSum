@@ -10,7 +10,7 @@
     <description>C# source implementation of Contrib.System.CheckSum</description>
     <developmentDependency>true</developmentDependency>
     <dependencies>
-      <dependency name="Source.JetBrains.Annotations" version="11.1.0" />
+      <dependency id="Source.JetBrains.Annotations" version="11.1.0" />
     </dependencies>
   </metadata>
   <files>
