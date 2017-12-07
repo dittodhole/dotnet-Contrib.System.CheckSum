@@ -1,12 +1,12 @@
 ﻿/** @pp
- * rootnamespace: System.Contrib
+ * rootnamespace: Contrib.System
  */
-namespace System.Contrib.CheckSum
+namespace Contrib.System.CheckSum
 {
-  using System;
-  using System.Collections;
-  using System.Collections.Generic;
-  using JetBrains.Annotations;
+  using global::System;
+  using global::System.Collections;
+  using global::System.Collections.Generic;
+  using global::JetBrains.Annotations;
 
   public partial class DictionaryCheckSumCalculator : ICheckSumCalculator<IDictionary>
   {

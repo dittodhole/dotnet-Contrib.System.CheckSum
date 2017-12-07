@@ -7,7 +7,7 @@
     <ProjectGuid>{C2DD2B0B-B277-4037-AC10-C0DBA0ACD58E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>System.Contrib.CheckSum</RootNamespace>
+    <RootNamespace>Contrib.System.CheckSum</RootNamespace>
     <AssemblyName>Contrib.System.CheckSum</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

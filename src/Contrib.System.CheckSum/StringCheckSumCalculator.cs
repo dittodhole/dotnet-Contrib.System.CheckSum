@@ -1,12 +1,12 @@
 ﻿/** @pp
- * rootnamespace: System.Contrib
+ * rootnamespace: Contrib.System
  */
-namespace System.Contrib.CheckSum
+namespace Contrib.System.CheckSum
 {
-  using System;
-  using System.Security.Cryptography;
-  using System.Text;
-  using JetBrains.Annotations;
+  using global::System;
+  using global::System.Security.Cryptography;
+  using global::System.Text;
+  using global::JetBrains.Annotations;
 
   [NotNull]
   public delegate HashAlgorithm GetHashAlgorithm();
