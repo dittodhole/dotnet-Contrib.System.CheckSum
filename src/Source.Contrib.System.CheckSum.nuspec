@@ -14,10 +14,10 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="CheckSumCalculator.cs" target="content\App_Packages\Source.Contrib.System.CheckSum_$version$\" />
-    <file src="DictionaryCheckSumCalculator.cs" target="content\App_Packages\Source.Contrib.System.CheckSum_$version$\" />
-    <file src="ObjectCheckSumCalculator.cs" target="content\App_Packages\Source.Contrib.System.CheckSum_$version$\" />
-    <file src="SequenceCheckSumCalculator.cs" target="content\App_Packages\Source.Contrib.System.CheckSum_$version$\" />
-    <file src="StringCheckSumCalculator.cs" target="content\App_Packages\Source.Contrib.System.CheckSum_$version$\" />
+    <file src="$id$\CheckSumCalculator.cs" target="content\App_Packages\Source.Contrib.System.CheckSum_$version$\" />
+    <file src="$id$\DictionaryCheckSumCalculator.cs" target="content\App_Packages\Source.Contrib.System.CheckSum_$version$\" />
+    <file src="$id$\ObjectCheckSumCalculator.cs" target="content\App_Packages\Source.Contrib.System.CheckSum_$version$\" />
+    <file src="$id$\SequenceCheckSumCalculator.cs" target="content\App_Packages\Source.Contrib.System.CheckSum_$version$\" />
+    <file src="$id$\StringCheckSumCalculator.cs" target="content\App_Packages\Source.Contrib.System.CheckSum_$version$\" />
   </files>
 </package>
