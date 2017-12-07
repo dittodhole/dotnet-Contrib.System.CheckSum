@@ -18,6 +18,11 @@ https://www.nuget.org/packages/Contrib.System.CheckSum
 
     PM> Install-Package Contrib.System.CheckSum
 
+[![NuGet Status](https://img.shields.io/nuget/v/Source.Contrib.System.CheckSum.svg)](https://www.nuget.org/packages/Source.Contrib.System.CheckSum)
+https://www.nuget.org/packages/Source.Contrib.System.CheckSum
+
+    PM> Install-Package Source.Contrib.System.CheckSum
+
 ### Pre Releases
 
     PM> nuget sources Add "dittodhole" https://www.myget.org/F/dittodhole/api/v3/index.json
@@ -26,6 +31,11 @@ https://www.nuget.org/packages/Contrib.System.CheckSum
 https://www.myget.org/feed/dittodhole/package/nuget/Contrib.System.CheckSum
 
     PM> Install-Package Contrib.System.CheckSum -pre
+
+[![MyGet Pre Release](https://img.shields.io/myget/dittodhole/vpre/Source.Contrib.System.CheckSum.svg)](https://www.myget.org/feed/dittodhole/package/nuget/Source.Contrib.System.CheckSum)
+https://www.myget.org/feed/dittodhole/package/nuget/Source.Contrib.System.CheckSum
+
+    PM> Install-Package Source.Contrib.System.CheckSum -pre
 
 ## Documentation
 
