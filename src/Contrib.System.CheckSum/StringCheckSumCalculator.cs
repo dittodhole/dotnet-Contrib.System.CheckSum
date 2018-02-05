@@ -33,9 +33,9 @@ namespace Contrib.System.CheckSum
     protected virtual byte[] GetBytes([NotNull] string str)
     {
       var encoding = this.GetEncoding();
-      var bytes = encoding.GetBytes(str);
+      var result = encoding.GetBytes(str);
 
-      return bytes;
+      return result;
     }
 
     /// <exception cref="Exception" />
@@ -43,7 +43,9 @@ namespace Contrib.System.CheckSum
     [NotNull]
     protected virtual Encoding GetEncoding()
     {
-      return Encoding.UTF8;
+      var result = Encoding.UTF8;
+
+      return result;
     }
 
     /// <exception cref="Exception" />
@@ -51,12 +53,13 @@ namespace Contrib.System.CheckSum
     [NotNull]
     protected virtual byte[] ComputeCheckSum([NotNull] byte[] buffer)
     {
+      byte[] result;
       using (var md5 = MD5.Create())
       {
-        var checkSum = md5.ComputeHash(buffer);
-
-        return checkSum;
+        result = md5.ComputeHash(buffer);
       }
+
+      return result;
     }
   }
 }
