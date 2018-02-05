@@ -129,13 +129,10 @@ namespace Contrib.System.CheckSum
   {
     /// <inheritdoc />
     public ObjectCheckSumCalculatorEx([NotNull] ICheckSumCalculator<IEnumerable> sequenceCheckSumCalculator)
-      : base(sequenceCheckSumCalculator)
-    {
-      this.CheckSumPropertyName = "CheckSum";
-    }
+      : base(sequenceCheckSumCalculator) { }
 
     [CanBeNull]
-    public string CheckSumPropertyName { get; set; }
+    public virtual string CheckSumPropertyName { get; set; }
 
     /// <inheritdoc />
     protected override bool IteratePropertyInfo(PropertyInfo propertyInfo)
