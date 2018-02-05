@@ -31,16 +31,16 @@ namespace Contrib.System.CheckSum
         throw new ArgumentNullException("input");
       }
 
-      var sequence = this.DictionaryIterator(input);
-      var checkSum = this._sequenceCheckSumCalculator.CalculateCheckSum(sequence);
+      var sequence = this.GetSequence(input);
+      var result = this._sequenceCheckSumCalculator.CalculateCheckSum(sequence);
 
-      return checkSum;
+      return result;
     }
 
     /// <exception cref="Exception" />
     [NotNull]
     [ItemNotNull]
-    private IEnumerable DictionaryIterator([NotNull] IDictionary dictionary)
+    protected virtual IEnumerable GetSequence([NotNull] IDictionary dictionary)
     {
       var sortedDictionary = new SortedDictionary<object, string>();
 
@@ -51,8 +51,10 @@ namespace Contrib.System.CheckSum
           continue;
         }
 
-        var value = dictionary[key];
-        var part = key + "=" + value;
+        var value = this.GetValue(dictionary,
+                                  key);
+        var part = this.GetPart(key,
+                                value);
 
         sortedDictionary.Add(key,
                              part);
@@ -61,10 +63,45 @@ namespace Contrib.System.CheckSum
       return sortedDictionary.Values;
     }
 
+    /// <exception cref="Exception" />
     [Pure]
-    public virtual bool IterateKey([NotNull] object key)
+    protected virtual bool IterateKey([NotNull] object key)
     {
-      return true;
+      var result = true;
+
+      return result;
+    }
+
+    /// <exception cref="Exception" />
+    [Pure]
+    [CanBeNull]
+    protected virtual object GetValue([NotNull] IDictionary dictionary,
+                                      [NotNull] object key)
+    {
+      object result;
+      if (dictionary.Contains(key))
+      {
+        result = dictionary[key];
+      }
+      else
+      {
+        result = null;
+      }
+
+      return result;
+    }
+
+    /// <exception cref="Exception" />
+    [Pure]
+    [NotNull]
+    protected virtual string GetPart([NotNull] object key,
+                                     [CanBeNull] object value)
+    {
+      var result = string.Concat(key,
+                                 "=",
+                                 value);
+
+      return result;
     }
   }
 
@@ -73,16 +110,13 @@ namespace Contrib.System.CheckSum
   {
     /// <inheritdoc />
     public DictionaryCheckSumCalculatorEx([NotNull] ICheckSumCalculator<IEnumerable> sequenceCheckSumCalculator)
-      : base(sequenceCheckSumCalculator)
-    {
-      this.CheckSumKey = "CRC";
-    }
+      : base(sequenceCheckSumCalculator) { }
 
     [CanBeNull]
-    public object CheckSumKey { get; set; }
+    public virtual object CheckSumKey { get; set; }
 
     /// <inheritdoc />
-    public override bool IterateKey(object key)
+    protected override bool IterateKey(object key)
     {
       if (key == this.CheckSumKey)
       {
@@ -100,15 +134,14 @@ namespace Contrib.System.CheckSum
         throw new ArgumentNullException("input");
       }
 
-      object checkSum;
-      if (input.Contains(this.CheckSumKey))
+      var key = this.CheckSumKey;
+      if (key == null)
       {
-        checkSum = input[this.CheckSumKey];
+        throw new Exception("Key is null");
       }
-      else
-      {
-        checkSum = null;
-      }
+
+      var checkSum = this.GetValue(input,
+                                   key);
 
       string result;
       if (checkSum == null)
@@ -131,10 +164,27 @@ namespace Contrib.System.CheckSum
         throw new ArgumentNullException("input");
       }
 
+      var key = this.CheckSumKey;
+      if (key == null)
+      {
+        throw new Exception("Key is null");
+      }
+
       var checkSum = this.CalculateCheckSum(input);
-      input[this.CheckSumKey] = checkSum;
+
+      this.SetValue(input,
+                    key,
+                    checkSum);
 
       return checkSum;
+    }
+
+    /// <exception cref="Exception" />
+    protected virtual void SetValue([NotNull] IDictionary input,
+                                    [NotNull] object key,
+                                    [CanBeNull] object value)
+    {
+      input[key] = value;
     }
 
     /// <inheritdoc />
