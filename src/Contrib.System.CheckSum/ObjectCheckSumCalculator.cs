@@ -55,8 +55,8 @@ namespace Contrib.System.CheckSum
           continue;
         }
 
-        var value = this.GetValue(propertyInfo,
-                                  obj);
+        var value = this.GetValue(obj,
+                                  propertyInfo);
         var part = this.GetPart(propertyInfo,
                                 value);
 
@@ -91,8 +91,8 @@ namespace Contrib.System.CheckSum
     /// <exception cref="Exception" />
     [Pure]
     [CanBeNull]
-    protected object GetValue([NotNull] PropertyInfo propertyInfo,
-                              [NotNull] object obj)
+    protected object GetValue([NotNull] object obj,
+                              [NotNull] PropertyInfo propertyInfo)
     {
       object result;
       try
@@ -167,8 +167,8 @@ namespace Contrib.System.CheckSum
                                           propertyName));
       }
 
-      var checkSum = this.GetValue(propertyInfo,
-                                   input);
+      var checkSum = this.GetValue(input,
+                                   propertyInfo);
 
       string result;
       if (checkSum == null)
