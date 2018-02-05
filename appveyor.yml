@@ -30,12 +30,12 @@ deploy:
 - provider: NuGet
   name: NuGet
   api_key:
-    secure: U6199dIr+h5NLeO9aWtxR2ihfMjDX3rrhqjdN3ByzlLzU9t3T00+MtjNQPkfrToY
+    secure: Y3iNqmSA013hl6GmOIOMtK3g2e6WNeW0SJbFKbvDqCjs4a5RTkCwCNMax56wMTWx
   on:
     branch: master
 - provider: NuGet
   name: NuGet (pre release)
   api_key:
-    secure: U6199dIr+h5NLeO9aWtxR2ihfMjDX3rrhqjdN3ByzlLzU9t3T00+MtjNQPkfrToY
+    secure: Y3iNqmSA013hl6GmOIOMtK3g2e6WNeW0SJbFKbvDqCjs4a5RTkCwCNMax56wMTWx
   on:
     branch: /release\/.*/

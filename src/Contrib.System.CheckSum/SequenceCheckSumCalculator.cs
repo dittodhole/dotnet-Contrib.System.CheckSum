@@ -31,8 +31,20 @@ namespace Contrib.System.CheckSum
         throw new ArgumentNullException("input");
       }
 
+      var str = this.GetString(input);
+      var result = this._checkSumCalculator.CalculateCheckSum(str);
+
+      return result;
+    }
+
+    /// <exception cref="Exception" />
+    [Pure]
+    [NotNull]
+    protected virtual string GetString([NotNull] IEnumerable sequence)
+    {
       var stringBuilder = new StringBuilder();
-      foreach (var element in input)
+
+      foreach (var element in sequence)
       {
         if (element == null)
         {
@@ -45,9 +57,9 @@ namespace Contrib.System.CheckSum
         }
       }
 
-      var checkSum = this._checkSumCalculator.CalculateCheckSum(stringBuilder.ToString());
+      var result = stringBuilder.ToString();
 
-      return checkSum;
+      return result;
     }
   }
 }
