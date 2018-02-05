@@ -91,8 +91,8 @@ namespace Contrib.System.CheckSum
     /// <exception cref="Exception" />
     [Pure]
     [CanBeNull]
-    protected object GetValue([NotNull] object obj,
-                              [NotNull] PropertyInfo propertyInfo)
+    protected virtual object GetValue([NotNull] object obj,
+                                      [NotNull] PropertyInfo propertyInfo)
     {
       object result;
       try
@@ -113,8 +113,8 @@ namespace Contrib.System.CheckSum
     /// <exception cref="Exception" />
     [Pure]
     [NotNull]
-    protected string GetPart([NotNull] PropertyInfo propertyInfo,
-                             [CanBeNull] object value)
+    protected virtual string GetPart([NotNull] PropertyInfo propertyInfo,
+                                     [CanBeNull] object value)
     {
       var result = string.Concat(propertyInfo.Name,
                                  "=",
