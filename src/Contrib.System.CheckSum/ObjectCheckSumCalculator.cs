@@ -239,9 +239,9 @@ namespace Contrib.System.CheckSum
       }
       catch (Exception exception)
       {
-        throw new InvalidOperationException(string.Format("Could not set value on property {0}",
-                                                          propertyInfo.Name),
-                                            exception);
+        throw new Exception(string.Format("Could not set value on property {0}",
+                                          propertyInfo.Name),
+                            exception);
       }
     }
 
