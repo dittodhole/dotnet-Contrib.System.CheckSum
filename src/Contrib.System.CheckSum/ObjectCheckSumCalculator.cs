@@ -24,7 +24,6 @@ namespace Contrib.System.CheckSum
     [NotNull]
     private readonly ICheckSumCalculator<IEnumerable> _sequenceCheckSumCalculator;
 
-    /// <exception cref="InvalidOperationException" />
     /// <inheritdoc />
     public virtual string CalculateCheckSum(object input)
     {
@@ -33,22 +32,21 @@ namespace Contrib.System.CheckSum
         throw new ArgumentNullException("input");
       }
 
-      var sequence = this.ObjectIterator(input);
-      var checkSum = this._sequenceCheckSumCalculator.CalculateCheckSum(sequence);
+      var sequence = this.GetSequence(input);
+      var result = this._sequenceCheckSumCalculator.CalculateCheckSum(sequence);
 
-      return checkSum;
+      return result;
     }
 
-    /// <exception cref="InvalidOperationException" />
     /// <exception cref="Exception" />
+    [Pure]
     [NotNull]
     [ItemNotNull]
-    private IEnumerable ObjectIterator([NotNull] object obj)
+    protected virtual IEnumerable GetSequence([NotNull] object obj)
     {
       var sortedDictionary = new SortedDictionary<string, object>();
 
-      var type = obj.GetType();
-      var propertyInfos = type.GetProperties(BindingFlags.Instance | BindingFlags.Public);
+      var propertyInfos = this.GetPropertyInfos(obj);
 
       foreach (var propertyInfo in propertyInfos)
       {
@@ -57,20 +55,10 @@ namespace Contrib.System.CheckSum
           continue;
         }
 
-        object value;
-        try
-        {
-          value = propertyInfo.GetValue(obj,
-                                        null);
-        }
-        catch (Exception exception)
-        {
-          throw new InvalidOperationException(string.Format("Could not get value from property {0}",
-                                                            propertyInfo.Name),
-                                              exception);
-        }
-
-        var part = propertyInfo.Name + "=" + value;
+        var value = this.GetValue(propertyInfo,
+                                  obj);
+        var part = this.GetPart(propertyInfo,
+                                value);
 
         sortedDictionary.Add(propertyInfo.Name,
                              part);
@@ -79,10 +67,59 @@ namespace Contrib.System.CheckSum
       return sortedDictionary.Values;
     }
 
+    /// <exception cref="Exception" />
     [Pure]
-    public virtual bool IteratePropertyInfo([NotNull] PropertyInfo propertyInfo)
+    [NotNull]
+    [ItemNotNull]
+    protected virtual PropertyInfo[] GetPropertyInfos([NotNull] object obj)
     {
-      return true;
+      var type = obj.GetType();
+      var result = type.GetProperties(BindingFlags.Instance | BindingFlags.Public);
+
+      return result;
+    }
+
+    [Pure]
+    protected virtual bool IteratePropertyInfo([NotNull] PropertyInfo propertyInfo)
+    {
+      var result = true;
+
+      return result;
+    }
+
+    /// <exception cref="Exception" />
+    [Pure]
+    [CanBeNull]
+    protected object GetValue([NotNull] PropertyInfo propertyInfo,
+                              [NotNull] object obj)
+    {
+      object result;
+      try
+      {
+        result = propertyInfo.GetValue(obj,
+                                       null);
+      }
+      catch (Exception exception)
+      {
+        throw new Exception(string.Format("Could not get value from property {0}",
+                                          propertyInfo.Name),
+                            exception);
+      }
+
+      return result;
+    }
+
+    /// <exception cref="Exception" />
+    [Pure]
+    [NotNull]
+    protected string GetPart([NotNull] PropertyInfo propertyInfo,
+                             [CanBeNull] object value)
+    {
+      var result = string.Concat(propertyInfo.Name,
+                                 "=",
+                                 value);
+
+      return result;
     }
   }
 
@@ -100,7 +137,7 @@ namespace Contrib.System.CheckSum
     public string CheckSumPropertyName { get; set; }
 
     /// <inheritdoc />
-    public override bool IteratePropertyInfo(PropertyInfo propertyInfo)
+    protected override bool IteratePropertyInfo(PropertyInfo propertyInfo)
     {
       if (string.Equals(propertyInfo.Name,
                         this.CheckSumPropertyName,
@@ -112,7 +149,6 @@ namespace Contrib.System.CheckSum
       return base.IteratePropertyInfo(propertyInfo);
     }
 
-    /// <exception cref="InvalidOperationException" />
     /// <inheritdoc />
     public virtual string GetStoredCheckSum(object input)
     {
@@ -121,27 +157,17 @@ namespace Contrib.System.CheckSum
         throw new ArgumentNullException("input");
       }
 
-      var type = input.GetType();
-      var propertyInfo = type.GetProperty(this.CheckSumPropertyName);
+      var propertyName = this.CheckSumPropertyName;
+      var propertyInfo = this.GetPropertyInfo(input,
+                                              propertyName);
       if (propertyInfo == null)
       {
-        throw new InvalidOperationException(string.Format("Could not find property {0} on {1}",
-                                                          this.CheckSumPropertyName,
-                                                          type));
+        throw new Exception(string.Format("Could not find property {0}",
+                                          propertyName));
       }
 
-      object checkSum;
-      try
-      {
-        checkSum = propertyInfo.GetValue(input,
-                                         null);
-      }
-      catch (Exception exception)
-      {
-        throw new InvalidOperationException(string.Format("Could not get value from property {0}",
-                                                          propertyInfo.Name),
-                                            exception);
-      }
+      var checkSum = this.GetValue(propertyInfo,
+                                   input);
 
       string result;
       if (checkSum == null)
@@ -156,7 +182,23 @@ namespace Contrib.System.CheckSum
       return result;
     }
 
-    /// <exception cref="InvalidOperationException" />
+    /// <exception cref="Exception" />
+    [Pure]
+    [CanBeNull]
+    protected virtual PropertyInfo GetPropertyInfo([NotNull] object obj,
+                                                   [CanBeNull] string propertyName)
+    {
+      if (propertyName == null)
+      {
+        return null;
+      }
+
+      var type = obj.GetType();
+      var result = type.GetProperty(propertyName);
+
+      return result;
+    }
+
     /// <inheritdoc />
     public virtual string CalculateAndStoreCheckSum(object input)
     {
@@ -165,21 +207,33 @@ namespace Contrib.System.CheckSum
         throw new ArgumentNullException("input");
       }
 
-      var checkSum = this.CalculateCheckSum(input);
+      var result = this.CalculateCheckSum(input);
 
-      var type = input.GetType();
-      var propertyInfo = type.GetProperty(this.CheckSumPropertyName);
+      var propertyName = this.CheckSumPropertyName;
+      var propertyInfo = this.GetPropertyInfo(input,
+                                              propertyName);
       if (propertyInfo == null)
       {
-        throw new InvalidOperationException(string.Format("Could not find property {0} on {1}",
-                                                          this.CheckSumPropertyName,
-                                                          type));
+        throw new Exception(string.Format("Could not find property {0}",
+                                          propertyName));
       }
 
+      this.SetValue(input,
+                    propertyInfo,
+                    result);
+
+      return result;
+    }
+
+    /// <exception cref="Exception" />
+    protected virtual void SetValue([NotNull] object obj,
+                                    [NotNull] PropertyInfo propertyInfo,
+                                    [CanBeNull] object value)
+    {
       try
       {
-        propertyInfo.SetValue(input,
-                              checkSum,
+        propertyInfo.SetValue(obj,
+                              value,
                               null);
       }
       catch (Exception exception)
@@ -188,11 +242,8 @@ namespace Contrib.System.CheckSum
                                                           propertyInfo.Name),
                                             exception);
       }
-
-      return checkSum;
     }
 
-    /// <exception cref="InvalidOperationException" />
     /// <inheritdoc />
     public virtual bool IsStoredCheckSumValid(object input)
     {
