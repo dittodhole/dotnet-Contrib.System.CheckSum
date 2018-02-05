@@ -79,6 +79,7 @@ namespace Contrib.System.CheckSum
       return result;
     }
 
+    /// <exception cref="Exception" />
     [Pure]
     protected virtual bool IteratePropertyInfo([NotNull] PropertyInfo propertyInfo)
     {
