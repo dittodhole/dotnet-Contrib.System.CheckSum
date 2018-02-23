@@ -43,6 +43,7 @@
     <Compile Include="ObjectCheckSumCalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SequenceCheckSumCalculator.cs" />
+    <Compile Include="SequenceMultiCheckSumCalculator.cs" />
     <Compile Include="StringCheckSumCalculator.cs" />
   </ItemGroup>
   <ItemGroup>
