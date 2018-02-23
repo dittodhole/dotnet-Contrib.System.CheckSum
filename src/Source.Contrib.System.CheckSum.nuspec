@@ -18,6 +18,7 @@
     <file src="$id$\DictionaryCheckSumCalculator.cs" target="content\App_Packages\Source.Contrib.System.CheckSum_$version$\" />
     <file src="$id$\ObjectCheckSumCalculator.cs" target="content\App_Packages\Source.Contrib.System.CheckSum_$version$\" />
     <file src="$id$\SequenceCheckSumCalculator.cs" target="content\App_Packages\Source.Contrib.System.CheckSum_$version$\" />
+    <file src="$id$\SequenceMultiCheckSumCalculator.cs" target="content\App_Packages\Source.Contrib.System.CheckSum_$version$\" />
     <file src="$id$\StringCheckSumCalculator.cs" target="content\App_Packages\Source.Contrib.System.CheckSum_$version$\" />
   </files>
 </package>
