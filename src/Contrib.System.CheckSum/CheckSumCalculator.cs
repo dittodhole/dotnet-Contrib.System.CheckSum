@@ -6,7 +6,12 @@ namespace Contrib.System.CheckSum
   using global::System;
   using global::JetBrains.Annotations;
 
-  public partial interface ICheckSumCalculator<T>
+#if CHECKSUM_PUBLIC
+  public
+ #else
+  internal
+#endif
+  partial interface ICheckSumCalculator<T>
   {
     /// <exception cref="ArgumentNullException"><paramref name="input" /> is <see langword="null" /></exception>
     /// <exception cref="Exception" />
@@ -15,7 +20,12 @@ namespace Contrib.System.CheckSum
     string CalculateCheckSum([NotNull] T input);
   }
 
-  public partial interface ICheckSumCalculatorEx<T>
+#if CHECKSUM_PUBLIC
+  public
+#else
+  internal
+#endif
+  partial interface ICheckSumCalculatorEx<T>
   {
     /// <exception cref="ArgumentNullException"><paramref name="input" /> is <see langword="null" /></exception>
     /// <exception cref="Exception" />

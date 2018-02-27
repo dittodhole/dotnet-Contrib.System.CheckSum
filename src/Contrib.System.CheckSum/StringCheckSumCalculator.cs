@@ -8,7 +8,12 @@ namespace Contrib.System.CheckSum
   using global::System.Text;
   using global::JetBrains.Annotations;
 
-  public partial class StringCheckSumCalculator : ICheckSumCalculator<string>
+#if CHECKSUM_PUBLIC
+  public
+#else
+  internal
+#endif
+  partial class StringCheckSumCalculator : ICheckSumCalculator<string>
   {
     /// <inheritdoc />
     public virtual string CalculateCheckSum(string input)

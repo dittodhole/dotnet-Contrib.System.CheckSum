@@ -8,7 +8,12 @@ namespace Contrib.System.CheckSum
   using global::System.Collections.Generic;
   using global::JetBrains.Annotations;
 
-  public partial class DictionaryCheckSumCalculator : ICheckSumCalculator<IDictionary>
+#if CHECKSUM_PUBLIC
+  public
+#else
+  internal
+#endif
+  partial class DictionaryCheckSumCalculator : ICheckSumCalculator<IDictionary>
   {
     /// <exception cref="ArgumentNullException"><paramref name="sequenceCheckSumCalculator"/> is <see langword="null"/></exception>
     public DictionaryCheckSumCalculator([NotNull] ICheckSumCalculator<IEnumerable> sequenceCheckSumCalculator)
@@ -105,7 +110,12 @@ namespace Contrib.System.CheckSum
     }
   }
 
-  public partial class DictionaryCheckSumCalculatorEx : DictionaryCheckSumCalculator,
+#if CHECKSUM_PUBLIC
+  public
+#else
+  internal
+#endif
+  partial class DictionaryCheckSumCalculatorEx : DictionaryCheckSumCalculator,
                                                         ICheckSumCalculatorEx<IDictionary>
   {
     /// <inheritdoc />

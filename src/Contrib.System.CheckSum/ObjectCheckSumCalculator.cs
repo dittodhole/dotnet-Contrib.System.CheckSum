@@ -9,7 +9,12 @@ namespace Contrib.System.CheckSum
   using global::System.Reflection;
   using global::JetBrains.Annotations;
 
-  public partial class ObjectCheckSumCalculator : ICheckSumCalculator<object>
+#if CHECKSUM_PUBLIC
+  public
+#else
+  internal
+#endif
+  partial class ObjectCheckSumCalculator : ICheckSumCalculator<object>
   {
     /// <exception cref="ArgumentNullException"><paramref name="sequenceCheckSumCalculator"/> is <see langword="null"/></exception>
     public ObjectCheckSumCalculator([NotNull] ICheckSumCalculator<IEnumerable> sequenceCheckSumCalculator)
@@ -124,7 +129,12 @@ namespace Contrib.System.CheckSum
     }
   }
 
-  public partial class ObjectCheckSumCalculatorEx : ObjectCheckSumCalculator,
+#if CHECKSUM_PUBLIC
+  public
+#else
+  internal
+#endif
+  partial class ObjectCheckSumCalculatorEx : ObjectCheckSumCalculator,
                                                     ICheckSumCalculatorEx<object>
   {
     /// <inheritdoc />
