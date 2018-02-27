@@ -8,7 +8,12 @@ namespace Contrib.System.CheckSum
   using global::System.Text;
   using global::JetBrains.Annotations;
 
-  public partial class SequenceCheckSumCalculator : ICheckSumCalculator<IEnumerable>
+#if CHECKSUM_PUBLIC
+  public
+#else
+  internal
+#endif
+  partial class SequenceCheckSumCalculator : ICheckSumCalculator<IEnumerable>
   {
     /// <exception cref="ArgumentNullException"><paramref name="checkSumCalculator"/> is <see langword="null"/></exception>
     public SequenceCheckSumCalculator([NotNull] ICheckSumCalculator<string> checkSumCalculator)
