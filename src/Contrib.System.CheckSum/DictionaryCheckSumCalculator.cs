@@ -116,7 +116,7 @@ namespace Contrib.System.CheckSum
   internal
 #endif
   partial class DictionaryCheckSumCalculatorEx : DictionaryCheckSumCalculator,
-                                                        ICheckSumCalculatorEx<IDictionary>
+                                                 ICheckSumCalculatorEx<IDictionary>
   {
     /// <inheritdoc />
     public DictionaryCheckSumCalculatorEx([NotNull] ICheckSumCalculator<IEnumerable> sequenceCheckSumCalculator)

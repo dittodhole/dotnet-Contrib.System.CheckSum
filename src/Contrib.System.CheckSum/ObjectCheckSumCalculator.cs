@@ -135,7 +135,7 @@ namespace Contrib.System.CheckSum
   internal
 #endif
   partial class ObjectCheckSumCalculatorEx : ObjectCheckSumCalculator,
-                                                    ICheckSumCalculatorEx<object>
+                                             ICheckSumCalculatorEx<object>
   {
     /// <inheritdoc />
     public ObjectCheckSumCalculatorEx([NotNull] ICheckSumCalculator<IEnumerable> sequenceCheckSumCalculator)
