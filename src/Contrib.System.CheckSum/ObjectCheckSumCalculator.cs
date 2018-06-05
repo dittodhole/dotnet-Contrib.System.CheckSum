@@ -49,7 +49,7 @@ namespace Contrib.System.CheckSum
     [ItemNotNull]
     protected virtual IEnumerable GetSequence([NotNull] object obj)
     {
-      var sortedDictionary = new SortedDictionary<string, object>();
+      var sortedDictionary = new SortedDictionary<string, object>(StringComparer.Ordinal);
 
       var propertyInfos = this.GetPropertyInfos(obj);
 
@@ -65,8 +65,7 @@ namespace Contrib.System.CheckSum
         var part = this.GetPart(propertyInfo,
                                 value);
 
-        sortedDictionary.Add(propertyInfo.Name,
-                             part);
+        sortedDictionary[propertyInfo.Name] = part;
       }
 
       return sortedDictionary.Values;

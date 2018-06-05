@@ -61,8 +61,7 @@ namespace Contrib.System.CheckSum
         var part = this.GetPart(key,
                                 value);
 
-        sortedDictionary.Add(key,
-                             part);
+        sortedDictionary[key] = part;
       }
 
       return sortedDictionary.Values;
