@@ -27,7 +27,7 @@ namespace Contrib.System.CheckSum
     [NotNull]
     private readonly ICheckSumCalculator<string> _checkSumCalculator;
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public virtual string CalculateCheckSum(IEnumerable input)
     {
       if (input == null)

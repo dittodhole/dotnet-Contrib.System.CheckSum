@@ -15,7 +15,7 @@ namespace Contrib.System.CheckSum
 #endif
   partial class StringCheckSumCalculator : ICheckSumCalculator<string>
   {
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public virtual string CalculateCheckSum(string input)
     {
       if (input == null)
@@ -32,7 +32,7 @@ namespace Contrib.System.CheckSum
       return result;
     }
 
-    /// <exception cref="Exception" />
+    /// <exception cref="Exception"/>
     [Pure]
     [NotNull]
     protected virtual byte[] GetBytes([NotNull] string str)
@@ -43,7 +43,7 @@ namespace Contrib.System.CheckSum
       return result;
     }
 
-    /// <exception cref="Exception" />
+    /// <exception cref="Exception"/>
     [Pure]
     [NotNull]
     protected virtual Encoding GetEncoding()
@@ -53,7 +53,7 @@ namespace Contrib.System.CheckSum
       return result;
     }
 
-    /// <exception cref="Exception" />
+    /// <exception cref="Exception"/>
     [Pure]
     [NotNull]
     protected virtual byte[] ComputeCheckSum([NotNull] byte[] buffer)

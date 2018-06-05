@@ -28,7 +28,7 @@ namespace Contrib.System.CheckSum
     [NotNull]
     private readonly ICheckSumCalculator<string> _checkSumCalculator;
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public virtual string CalculateCheckSum(IEnumerable input)
     {
       if (input == null)
@@ -42,7 +42,7 @@ namespace Contrib.System.CheckSum
       return result;
     }
 
-    /// <exception cref="Exception" />
+    /// <exception cref="Exception"/>
     [Pure]
     [NotNull]
     protected virtual string GetString([NotNull] IEnumerable sequence)

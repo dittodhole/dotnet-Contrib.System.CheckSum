@@ -28,7 +28,7 @@ namespace Contrib.System.CheckSum
     [NotNull]
     private readonly ICheckSumCalculator<IEnumerable> _sequenceCheckSumCalculator;
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public virtual string CalculateCheckSum(IDictionary input)
     {
       if (input == null)
@@ -42,7 +42,7 @@ namespace Contrib.System.CheckSum
       return result;
     }
 
-    /// <exception cref="Exception" />
+    /// <exception cref="Exception"/>
     [NotNull]
     [ItemNotNull]
     protected virtual IEnumerable GetSequence([NotNull] IDictionary dictionary)
@@ -67,7 +67,7 @@ namespace Contrib.System.CheckSum
       return sortedDictionary.Values;
     }
 
-    /// <exception cref="Exception" />
+    /// <exception cref="Exception"/>
     [Pure]
     protected virtual bool IterateKey([NotNull] object key)
     {
@@ -76,7 +76,7 @@ namespace Contrib.System.CheckSum
       return result;
     }
 
-    /// <exception cref="Exception" />
+    /// <exception cref="Exception"/>
     [Pure]
     [CanBeNull]
     protected virtual object GetValue([NotNull] IDictionary dictionary,
@@ -95,7 +95,7 @@ namespace Contrib.System.CheckSum
       return result;
     }
 
-    /// <exception cref="Exception" />
+    /// <exception cref="Exception"/>
     [Pure]
     [NotNull]
     protected virtual string GetPart([NotNull] object key,
@@ -117,14 +117,14 @@ namespace Contrib.System.CheckSum
   partial class DictionaryCheckSumCalculatorEx : DictionaryCheckSumCalculator,
                                                  ICheckSumCalculatorEx<IDictionary>
   {
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public DictionaryCheckSumCalculatorEx([NotNull] ICheckSumCalculator<IEnumerable> sequenceCheckSumCalculator)
       : base(sequenceCheckSumCalculator) { }
 
     [CanBeNull]
     public virtual object CheckSumKey { get; set; }
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     protected override bool IterateKey(object key)
     {
       if (key == this.CheckSumKey)
@@ -135,7 +135,7 @@ namespace Contrib.System.CheckSum
       return base.IterateKey(key);
     }
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public virtual string GetStoredCheckSum(IDictionary input)
     {
       if (input == null)
@@ -165,7 +165,7 @@ namespace Contrib.System.CheckSum
       return result;
     }
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public virtual string CalculateAndStoreCheckSum(IDictionary input)
     {
       if (input == null)
@@ -188,7 +188,7 @@ namespace Contrib.System.CheckSum
       return checkSum;
     }
 
-    /// <exception cref="Exception" />
+    /// <exception cref="Exception"/>
     protected virtual void SetValue([NotNull] IDictionary input,
                                     [NotNull] object key,
                                     [CanBeNull] object value)
@@ -196,7 +196,7 @@ namespace Contrib.System.CheckSum
       input[key] = value;
     }
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public virtual bool IsStoredCheckSumValid(IDictionary input)
     {
       if (input == null)

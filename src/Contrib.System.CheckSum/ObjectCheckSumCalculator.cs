@@ -29,7 +29,7 @@ namespace Contrib.System.CheckSum
     [NotNull]
     private readonly ICheckSumCalculator<IEnumerable> _sequenceCheckSumCalculator;
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public virtual string CalculateCheckSum(object input)
     {
       if (input == null)
@@ -43,7 +43,7 @@ namespace Contrib.System.CheckSum
       return result;
     }
 
-    /// <exception cref="Exception" />
+    /// <exception cref="Exception"/>
     [Pure]
     [NotNull]
     [ItemNotNull]
@@ -71,7 +71,7 @@ namespace Contrib.System.CheckSum
       return sortedDictionary.Values;
     }
 
-    /// <exception cref="Exception" />
+    /// <exception cref="Exception"/>
     [Pure]
     [NotNull]
     [ItemNotNull]
@@ -83,7 +83,7 @@ namespace Contrib.System.CheckSum
       return result;
     }
 
-    /// <exception cref="Exception" />
+    /// <exception cref="Exception"/>
     [Pure]
     protected virtual bool IteratePropertyInfo([NotNull] PropertyInfo propertyInfo)
     {
@@ -92,7 +92,7 @@ namespace Contrib.System.CheckSum
       return result;
     }
 
-    /// <exception cref="Exception" />
+    /// <exception cref="Exception"/>
     [Pure]
     [CanBeNull]
     protected virtual object GetValue([NotNull] object obj,
@@ -114,7 +114,7 @@ namespace Contrib.System.CheckSum
       return result;
     }
 
-    /// <exception cref="Exception" />
+    /// <exception cref="Exception"/>
     [Pure]
     [NotNull]
     protected virtual string GetPart([NotNull] PropertyInfo propertyInfo,
@@ -136,14 +136,14 @@ namespace Contrib.System.CheckSum
   partial class ObjectCheckSumCalculatorEx : ObjectCheckSumCalculator,
                                              ICheckSumCalculatorEx<object>
   {
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public ObjectCheckSumCalculatorEx([NotNull] ICheckSumCalculator<IEnumerable> sequenceCheckSumCalculator)
       : base(sequenceCheckSumCalculator) { }
 
     [CanBeNull]
     public virtual string CheckSumPropertyName { get; set; }
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     protected override bool IteratePropertyInfo(PropertyInfo propertyInfo)
     {
       if (string.Equals(propertyInfo.Name,
@@ -156,7 +156,7 @@ namespace Contrib.System.CheckSum
       return base.IteratePropertyInfo(propertyInfo);
     }
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public virtual string GetStoredCheckSum(object input)
     {
       if (input == null)
@@ -189,7 +189,7 @@ namespace Contrib.System.CheckSum
       return result;
     }
 
-    /// <exception cref="Exception" />
+    /// <exception cref="Exception"/>
     [Pure]
     [CanBeNull]
     protected virtual PropertyInfo GetPropertyInfo([NotNull] object obj,
@@ -206,7 +206,7 @@ namespace Contrib.System.CheckSum
       return result;
     }
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public virtual string CalculateAndStoreCheckSum(object input)
     {
       if (input == null)
@@ -232,7 +232,7 @@ namespace Contrib.System.CheckSum
       return result;
     }
 
-    /// <exception cref="Exception" />
+    /// <exception cref="Exception"/>
     protected virtual void SetValue([NotNull] object obj,
                                     [NotNull] PropertyInfo propertyInfo,
                                     [CanBeNull] object value)
@@ -251,7 +251,7 @@ namespace Contrib.System.CheckSum
       }
     }
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public virtual bool IsStoredCheckSumValid(object input)
     {
       if (input == null)
