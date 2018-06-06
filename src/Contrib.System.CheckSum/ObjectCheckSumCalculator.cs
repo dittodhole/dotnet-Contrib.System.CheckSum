@@ -21,7 +21,7 @@ namespace Contrib.System.CheckSum
     ///   Initializes a new instance of the <see cref="ObjectCheckSumCalculator"/> class.
     /// </summary>
     /// <param name="sequenceCheckSumCalculator"/>
-    /// <exception cref="ArgumentNullException"><paramref name="sequenceCheckSumCalculator"/> is <see langword="null"/></exception>
+    /// <exception cref="ArgumentNullException"><paramref name="sequenceCheckSumCalculator"/> is <see langword="null"/>.</exception>
     public ObjectCheckSumCalculator([NotNull] ICheckSumCalculator<IEnumerable> sequenceCheckSumCalculator)
     {
       if (sequenceCheckSumCalculator == null)
@@ -167,7 +167,7 @@ namespace Contrib.System.CheckSum
     ///   Initializes a new instance of the <see cref="ObjectCheckSumCalculatorEx"/> class.
     /// </summary>
     /// <param name="sequenceCheckSumCalculator"/>
-    /// <exception cref="ArgumentNullException"><paramref name="sequenceCheckSumCalculator"/> is <see langword="null"/></exception>
+    /// <exception cref="ArgumentNullException"><paramref name="sequenceCheckSumCalculator"/> is <see langword="null"/>.</exception>
     public ObjectCheckSumCalculatorEx([NotNull] ICheckSumCalculator<IEnumerable> sequenceCheckSumCalculator)
       : base(sequenceCheckSumCalculator) { }
 
