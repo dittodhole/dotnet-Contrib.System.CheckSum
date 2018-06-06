@@ -7,7 +7,7 @@ namespace Contrib.System.CheckSum
   using global::System.Collections;
   using global::JetBrains.Annotations;
 
-#if CHECKSUM_PUBLIC
+#if CONTRIB_SYSTEM_CHECKSUM
   public
 #else
   internal

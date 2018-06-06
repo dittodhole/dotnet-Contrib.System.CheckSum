@@ -8,7 +8,7 @@ namespace Contrib.System.CheckSum
   using global::System.Text;
   using global::JetBrains.Annotations;
 
-#if CHECKSUM_PUBLIC
+#if CONTRIB_SYSTEM_CHECKSUM
   public
 #else
   internal
