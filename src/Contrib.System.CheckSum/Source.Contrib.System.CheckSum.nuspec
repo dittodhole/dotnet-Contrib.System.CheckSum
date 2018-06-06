@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Source.Contrib.System.CheckSum</id>
+    <title>Source.$title$</title>
+    <version>$version$</version>
+    <authors>$author$</authors>
+    <owners>dittodhole</owners>
+    <licenseUrl>https://github.com/dittodhole/WTFNMFPLv3</licenseUrl>
+    <projectUrl>https://github.com/dittodhole/dotnet-Contrib.System.CheckSum</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/dittodhole/dotnet-Contrib.System.CheckSum/$branch$/assets/noun_1117655_cc.png</iconUrl>
+    <description>C# source implementation of Contrib.System.CheckSum</description>
+    <developmentDependency>true</developmentDependency>
+    <dependencies>
+      <dependency id="Source.JetBrains.Annotations" version="11.1.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="CheckSumCalculator.cs" target="content\App_Packages\Source.Contrib.System.CheckSum_$version$\" />
+    <file src="DictionaryCheckSumCalculator.cs" target="content\App_Packages\Source.Contrib.System.CheckSum_$version$\" />
+    <file src="ObjectCheckSumCalculator.cs" target="content\App_Packages\Source.Contrib.System.CheckSum_$version$\" />
+    <file src="SequenceCheckSumCalculator.cs" target="content\App_Packages\Source.Contrib.System.CheckSum_$version$\" />
+    <file src="SequenceMultiCheckSumCalculator.cs" target="content\App_Packages\Source.Contrib.System.CheckSum_$version$\" />
+    <file src="StringCheckSumCalculator.cs" target="content\App_Packages\Source.Contrib.System.CheckSum_$version$\" />
+  </files>
+</package>
