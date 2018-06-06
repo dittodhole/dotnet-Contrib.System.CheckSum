@@ -68,7 +68,7 @@ namespace Contrib.System.CheckSum
     }
 
     /// <summary>
-    ///   Converts <paramref name="str"/> to <see cref="byte[]"/>.
+    ///   Converts <paramref name="str"/> to <see cref="T:byte[]"/>.
     /// </summary>
     /// <param name="str"/>
     /// <exception cref="Exception"/>
