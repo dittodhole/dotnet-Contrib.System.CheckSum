@@ -8,6 +8,17 @@ namespace Contrib.System.CheckSum
   using global::System.Text;
   using global::JetBrains.Annotations;
 
+  /// <summary>
+  ///   
+  /// </summary>
+  /// <exception cref="Exception"/>
+#if CONTRIB_SYSTEM_CHECKSUM
+  public
+#else
+  internal
+#endif
+  delegate HashAlgorithm HashAlgorithmFactory();
+
   /// <inheritdoc/>
 #if CONTRIB_SYSTEM_CHECKSUM
   public
@@ -16,6 +27,29 @@ namespace Contrib.System.CheckSum
 #endif
   partial class StringCheckSumCalculator : ICheckSumCalculator<string>
   {
+    /// <summary>
+    ///   Initializes a new instance of the <see cref="StringCheckSumCalculator"/> class.
+    /// </summary>
+    public StringCheckSumCalculator()
+      : this(MD5.Create) { }
+
+    /// <summary>
+    ///   Initializes a new instance of the <see cref="StringCheckSumCalculator"/> class.
+    /// </summary>
+    /// <param name="hashAlgorithmFactory"/>
+    /// <exception cref="ArgumentNullException"><paramref name="hashAlgorithmFactory"/> is <see langword="null"/>.</exception>
+    public StringCheckSumCalculator([NotNull] HashAlgorithmFactory hashAlgorithmFactory)
+    {
+      if (hashAlgorithmFactory == null)
+      {
+        throw new ArgumentNullException("hashAlgorithmFactory");
+      }
+      this._hashAlgorithmFactory = hashAlgorithmFactory;
+    }
+
+    [NotNull]
+    private readonly HashAlgorithmFactory _hashAlgorithmFactory;
+
     /// <inheritdoc/>
     public virtual string CalculateCheckSum(string input)
     {
@@ -71,9 +105,9 @@ namespace Contrib.System.CheckSum
     protected virtual byte[] ComputeCheckSum([NotNull] byte[] buffer)
     {
       byte[] result;
-      using (var md5 = MD5.Create())
+      using (var hashAlgorithm = _hashAlgorithmFactory.Invoke())
       {
-        result = md5.ComputeHash(buffer);
+        result = hashAlgorithm.ComputeHash(buffer);
       }
 
       return result;
