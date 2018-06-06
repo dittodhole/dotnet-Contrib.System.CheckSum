@@ -8,6 +8,7 @@ namespace Contrib.System.CheckSum
   using global::System.Text;
   using global::JetBrains.Annotations;
 
+  /// <inheritdoc/>
 #if CONTRIB_SYSTEM_CHECKSUM
   public
 #else
@@ -32,6 +33,10 @@ namespace Contrib.System.CheckSum
       return result;
     }
 
+    /// <summary>
+    ///   Converts <paramref name="str"/> to <see cref="byte[]"/>.
+    /// </summary>
+    /// <param name="str"/>
     /// <exception cref="Exception"/>
     [Pure]
     [NotNull]
@@ -43,6 +48,9 @@ namespace Contrib.System.CheckSum
       return result;
     }
 
+    /// <summary>
+    ///   Returns the encoding.
+    /// </summary>
     /// <exception cref="Exception"/>
     [Pure]
     [NotNull]
@@ -53,6 +61,10 @@ namespace Contrib.System.CheckSum
       return result;
     }
 
+    /// <summary>
+    ///   Computes the check sum for <paramref name="buffer"/>.
+    /// </summary>
+    /// <param name="buffer"/>
     /// <exception cref="Exception"/>
     [Pure]
     [NotNull]

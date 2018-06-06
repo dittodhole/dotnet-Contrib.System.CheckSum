@@ -8,6 +8,7 @@ namespace Contrib.System.CheckSum
   using global::System.Collections.Generic;
   using global::JetBrains.Annotations;
 
+  /// <inheritdoc/>
 #if CONTRIB_SYSTEM_CHECKSUM
   public
 #else
@@ -15,7 +16,11 @@ namespace Contrib.System.CheckSum
 #endif
   partial class DictionaryCheckSumCalculator : ICheckSumCalculator<IDictionary>
   {
-    /// <exception cref="ArgumentNullException"><paramref name="sequenceCheckSumCalculator"/> is <see langword="null"/></exception>
+    /// <summary>
+    ///   Initializes a new instance of the <see cref="DictionaryCheckSumCalculator"/> class.
+    /// </summary>
+    /// <param name="sequenceCheckSumCalculator"/>
+    /// <exception cref="ArgumentNullException"><paramref name="sequenceCheckSumCalculator"/> is <see langword="null"/>.</exception>
     public DictionaryCheckSumCalculator([NotNull] ICheckSumCalculator<IEnumerable> sequenceCheckSumCalculator)
     {
       if (sequenceCheckSumCalculator == null)
@@ -42,9 +47,12 @@ namespace Contrib.System.CheckSum
       return result;
     }
 
+    /// <summary>
+    ///   Converts <paramref name="dictionary"/> to <see cref="IEnumerable"/>.
+    /// </summary>
+    /// <param name="dictionary"/>
     /// <exception cref="Exception"/>
     [NotNull]
-    [ItemNotNull]
     protected virtual IEnumerable GetSequence([NotNull] IDictionary dictionary)
     {
       var sortedDictionary = new SortedDictionary<object, string>();
@@ -67,6 +75,10 @@ namespace Contrib.System.CheckSum
       return sortedDictionary.Values;
     }
 
+    /// <summary>
+    ///   Indicates if <paramref name="key"/> should be iterated in <see cref="DictionaryCheckSumCalculator.GetSequence"/>.
+    /// </summary>
+    /// <param name="key"/>
     /// <exception cref="Exception"/>
     [Pure]
     protected virtual bool IterateKey([NotNull] object key)
@@ -76,6 +88,11 @@ namespace Contrib.System.CheckSum
       return result;
     }
 
+    /// <summary>
+    ///   Returns the value for <paramref name="key"/> in <paramref name="dictionary"/>.
+    /// </summary>
+    /// <param name="dictionary"/>
+    /// <param name="key"/>
     /// <exception cref="Exception"/>
     [Pure]
     [CanBeNull]
@@ -95,6 +112,11 @@ namespace Contrib.System.CheckSum
       return result;
     }
 
+    /// <summary>
+    ///   Returns a simplified string representation of <paramref name="key"/> and <paramref name="value"/> for check sum calculation.
+    /// </summary>
+    /// <param name="key"/>
+    /// <param name="value"/>
     /// <exception cref="Exception"/>
     [Pure]
     [NotNull]
@@ -109,6 +131,7 @@ namespace Contrib.System.CheckSum
     }
   }
 
+  /// <inheritdoc cref="ICheckSumCalculatorEx{T}"/>
 #if CONTRIB_SYSTEM_CHECKSUM
   public
 #else
@@ -117,10 +140,18 @@ namespace Contrib.System.CheckSum
   partial class DictionaryCheckSumCalculatorEx : DictionaryCheckSumCalculator,
                                                  ICheckSumCalculatorEx<IDictionary>
   {
-    /// <inheritdoc/>
+    /// <summary>
+    ///   Initializes a new instance of the <see cref="DictionaryCheckSumCalculatorEx"/> class.
+    /// </summary>
+    /// <param name="sequenceCheckSumCalculator"/>
+    /// <exception cref="ArgumentNullException"><paramref name="sequenceCheckSumCalculator"/> is <see langword="null"/>.</exception>
     public DictionaryCheckSumCalculatorEx([NotNull] ICheckSumCalculator<IEnumerable> sequenceCheckSumCalculator)
       : base(sequenceCheckSumCalculator) { }
 
+    /// <summary>
+    ///   Gets or sets the key for check sum storage.
+    /// </summary>
+    /// <seealso cref="DictionaryCheckSumCalculatorEx.IterateKey"/>
     [CanBeNull]
     public virtual object CheckSumKey { get; set; }
 
@@ -188,6 +219,12 @@ namespace Contrib.System.CheckSum
       return checkSum;
     }
 
+    /// <summary>
+    ///   Sets <paramref name="value"/> for <paramref name="key"/> in <paramref name="input"/>.
+    /// </summary>
+    /// <param name="input"/>
+    /// <param name="key"/>
+    /// <param name="value"/>
     /// <exception cref="Exception"/>
     protected virtual void SetValue([NotNull] IDictionary input,
                                     [NotNull] object key,

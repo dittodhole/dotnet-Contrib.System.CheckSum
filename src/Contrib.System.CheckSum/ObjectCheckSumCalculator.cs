@@ -9,6 +9,7 @@ namespace Contrib.System.CheckSum
   using global::System.Reflection;
   using global::JetBrains.Annotations;
 
+  /// <inheritdoc/>
 #if CONTRIB_SYSTEM_CHECKSUM
   public
 #else
@@ -16,6 +17,10 @@ namespace Contrib.System.CheckSum
 #endif
   partial class ObjectCheckSumCalculator : ICheckSumCalculator<object>
   {
+    /// <summary>
+    ///   Initializes a new instance of the <see cref="ObjectCheckSumCalculator"/> class.
+    /// </summary>
+    /// <param name="sequenceCheckSumCalculator"/>
     /// <exception cref="ArgumentNullException"><paramref name="sequenceCheckSumCalculator"/> is <see langword="null"/></exception>
     public ObjectCheckSumCalculator([NotNull] ICheckSumCalculator<IEnumerable> sequenceCheckSumCalculator)
     {
@@ -43,10 +48,13 @@ namespace Contrib.System.CheckSum
       return result;
     }
 
+    /// <summary>
+    ///   Converts <paramref name="obj"/> to <see cref="IEnumerable"/>.
+    /// </summary>
+    /// <param name="obj"/>
     /// <exception cref="Exception"/>
     [Pure]
     [NotNull]
-    [ItemNotNull]
     protected virtual IEnumerable GetSequence([NotNull] object obj)
     {
       var sortedDictionary = new SortedDictionary<string, object>(StringComparer.Ordinal);
@@ -71,6 +79,10 @@ namespace Contrib.System.CheckSum
       return sortedDictionary.Values;
     }
 
+    /// <summary>
+    ///   Returns all <see cref="PropertyInfo"/> classes for <paramref name="obj"/>.
+    /// </summary>
+    /// <param name="obj"/>
     /// <exception cref="Exception"/>
     [Pure]
     [NotNull]
@@ -83,6 +95,10 @@ namespace Contrib.System.CheckSum
       return result;
     }
 
+    /// <summary>
+    ///   Indicates if <paramref name="propertyInfo"/> should be iterated in <see cref="ObjectCheckSumCalculator.GetSequence"/>.
+    /// </summary>
+    /// <param name="propertyInfo"/>
     /// <exception cref="Exception"/>
     [Pure]
     protected virtual bool IteratePropertyInfo([NotNull] PropertyInfo propertyInfo)
@@ -92,6 +108,11 @@ namespace Contrib.System.CheckSum
       return result;
     }
 
+    /// <summary>
+    ///   Returns the value for <paramref name="propertyInfo"/> in <paramref name="obj"/>.
+    /// </summary>
+    /// <param name="obj"/>
+    /// <param name="propertyInfo"/>
     /// <exception cref="Exception"/>
     [Pure]
     [CanBeNull]
@@ -114,6 +135,11 @@ namespace Contrib.System.CheckSum
       return result;
     }
 
+    /// <summary>
+    ///   Returns a simplified string representation of <paramref name="propertyInfo"/> and <paramref name="value"/> for check sum calculation.
+    /// </summary>
+    /// <param name="propertyInfo"/>
+    /// <param name="value"/>
     /// <exception cref="Exception"/>
     [Pure]
     [NotNull]
@@ -128,6 +154,7 @@ namespace Contrib.System.CheckSum
     }
   }
 
+  /// <inheritdoc cref="ICheckSumCalculatorEx{T}"/>
 #if CONTRIB_SYSTEM_CHECKSUM
   public
 #else
@@ -136,10 +163,18 @@ namespace Contrib.System.CheckSum
   partial class ObjectCheckSumCalculatorEx : ObjectCheckSumCalculator,
                                              ICheckSumCalculatorEx<object>
   {
-    /// <inheritdoc/>
+    /// <summary>
+    ///   Initializes a new instance of the <see cref="ObjectCheckSumCalculatorEx"/> class.
+    /// </summary>
+    /// <param name="sequenceCheckSumCalculator"/>
+    /// <exception cref="ArgumentNullException"><paramref name="sequenceCheckSumCalculator"/> is <see langword="null"/></exception>
     public ObjectCheckSumCalculatorEx([NotNull] ICheckSumCalculator<IEnumerable> sequenceCheckSumCalculator)
       : base(sequenceCheckSumCalculator) { }
 
+    /// <summary>
+    ///   Gets or sets the property for check sum storage.
+    /// </summary>
+    /// <seealso cref="ObjectCheckSumCalculatorEx.IteratePropertyInfo"/>
     [CanBeNull]
     public virtual string CheckSumPropertyName { get; set; }
 
@@ -189,6 +224,11 @@ namespace Contrib.System.CheckSum
       return result;
     }
 
+    /// <summary>
+    ///   Returns the property for <paramref name="propertyName"/> of <paramref name="obj"/>.
+    /// </summary>
+    /// <param name="obj"/>
+    /// <param name="propertyName"/>
     /// <exception cref="Exception"/>
     [Pure]
     [CanBeNull]
@@ -232,6 +272,12 @@ namespace Contrib.System.CheckSum
       return result;
     }
 
+    /// <summary>
+    ///   Sets <paramref name="value"/> for <paramref name="propertyInfo"/> in <paramref name="obj"/>.
+    /// </summary>
+    /// <param name="obj"/>
+    /// <param name="propertyInfo"/>
+    /// <param name="value"/>
     /// <exception cref="Exception"/>
     protected virtual void SetValue([NotNull] object obj,
                                     [NotNull] PropertyInfo propertyInfo,
