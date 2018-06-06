@@ -1,5 +1,5 @@
 ﻿/** @pp
- * rootnamespace: Contrib.System
+ * rootnamespace: Contrib.System.CheckSum
  */
 namespace Contrib.System.CheckSum
 {
