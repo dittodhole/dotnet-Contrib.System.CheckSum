@@ -8,22 +8,39 @@
 
 ### [myget.org][1]
 
-[![](https://img.shields.io/appveyor/ci/dittodhole/dotnet-contrib-system-checksum/develop.svg)][2]
+[![](https://img.shields.io/appveyor/ci/dittodhole/dotnet-contrib-system-checksum/develop.svg)][3]
 [![](https://img.shields.io/myget/dittodhole/vpre/Contrib.System.CheckSum.svg)][1]
 
 ```powershell
 PM> Install-Package -Id Contrib.System.CheckSum -pre --source https://www.myget.org/F/dittodhole/api/v2
 ```
 
-### [nuget.org][3]
+### [myget.org][2]
 
-[![](https://img.shields.io/appveyor/ci/dittodhole/dotnet-contrib-system-checksum/master.svg)][4]
-[![](https://img.shields.io/nuget/v/Contrib.System.CheckSum.svg)][3]
+[![](https://img.shields.io/appveyor/ci/dittodhole/dotnet-contrib-system-checksum/develop.svg)][3]
+[![](https://img.shields.io/myget/dittodhole/vpre/Source.Contrib.System.CheckSum.svg)][2]
+
+```powershell
+PM> Install-Package -Id Source.Contrib.System.CheckSum -pre --source https://www.myget.org/F/dittodhole/api/v2
+```
+
+### [nuget.org][4]
+
+[![](https://img.shields.io/appveyor/ci/dittodhole/dotnet-contrib-system-checksum/master.svg)][6]
+[![](https://img.shields.io/nuget/v/Contrib.System.CheckSum.svg)][4]
 
 ```powershell
 PM> Install-Package -Id Contrib.System.CheckSum
 ```
 
+### [nuget.org][5]
+
+[![](https://img.shields.io/appveyor/ci/dittodhole/dotnet-contrib-system-checksum/master.svg)][6]
+[![](https://img.shields.io/nuget/v/Source.Contrib.System.CheckSum.svg)][5]
+
+```powershell
+PM> Install-Package -Id Source.Contrib.System.CheckSum
+```
 
 ## Example
 
@@ -217,6 +234,8 @@ dotnet-Contrib.System.CheckSum is published under [WTFNMFPLv3](https://github.co
 
 
 [1]: https://www.myget.org/feed/dittodhole/package/nuget/Contrib.System.CheckSum
-[2]: https://ci.appveyor.com/project/dittodhole/dotnet-contrib-system-checksum/branch/develop
-[3]: https://www.nuget.org/packages/Contrib.System.CheckSum
-[4]: https://ci.appveyor.com/project/dittodhole/dotnet-contrib-system-checksum/branch/master
+[2]: https://www.myget.org/feed/dittodhole/package/nuget/Source.Contrib.System.CheckSum
+[3]: https://ci.appveyor.com/project/dittodhole/dotnet-contrib-system-checksum/branch/develop
+[4]: https://www.nuget.org/packages/Contrib.System.CheckSum
+[5]: https://www.nuget.org/packages/Source.Contrib.System.CheckSum
+[6]: https://ci.appveyor.com/project/dittodhole/dotnet-contrib-system-checksum/branch/master
