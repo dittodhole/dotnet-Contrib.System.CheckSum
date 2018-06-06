@@ -105,7 +105,7 @@ namespace Contrib.System.CheckSum
     protected virtual byte[] ComputeCheckSum([NotNull] byte[] buffer)
     {
       byte[] result;
-      using (var hashAlgorithm = _hashAlgorithmFactory.Invoke())
+      using (var hashAlgorithm = this._hashAlgorithmFactory.Invoke())
       {
         result = hashAlgorithm.ComputeHash(buffer);
       }
