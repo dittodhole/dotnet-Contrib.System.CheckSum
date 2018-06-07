@@ -60,7 +60,6 @@ namespace Contrib.System.CheckSum
       var sortedDictionary = new SortedDictionary<string, object>(StringComparer.Ordinal);
 
       var propertyInfos = this.GetPropertyInfos(obj);
-
       foreach (var propertyInfo in propertyInfos)
       {
         if (!this.IteratePropertyInfo(propertyInfo))
@@ -242,15 +241,18 @@ namespace Contrib.System.CheckSum
     protected virtual PropertyInfo GetPropertyInfo([NotNull] object obj,
                                                    [CanBeNull] string propertyName)
     {
-      PropertyInfo result;
-      if (propertyName == null)
+      PropertyInfo result = null;
+
+      var propertyInfos = this.GetPropertyInfos(obj);
+      foreach (var propertyInfo in propertyInfos)
       {
-        result = null;
-      }
-      else
-      {
-        var type = obj.GetType();
-        result = type.GetProperty(propertyName);
+        if (string.Equals(propertyInfo.Name,
+                          propertyName,
+                          StringComparison.Ordinal))
+        {
+          result = propertyInfo;
+          break;
+        }
       }
 
       return result;
