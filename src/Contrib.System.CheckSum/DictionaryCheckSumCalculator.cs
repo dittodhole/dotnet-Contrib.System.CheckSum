@@ -72,7 +72,9 @@ namespace Contrib.System.CheckSum
         sortedDictionary[key] = part;
       }
 
-      return sortedDictionary.Values;
+      var result = sortedDictionary.Values;
+
+      return result;
     }
 
     /// <summary>
@@ -158,12 +160,17 @@ namespace Contrib.System.CheckSum
     /// <inheritdoc/>
     protected override bool IterateKey(object key)
     {
+      bool result;
       if (key == this.CheckSumKey)
       {
-        return false;
+        result = false;
+      }
+      else
+      {
+        result = base.IterateKey(key);
       }
 
-      return base.IterateKey(key);
+      return result;
     }
 
     /// <inheritdoc/>
@@ -210,13 +217,13 @@ namespace Contrib.System.CheckSum
         throw new Exception("Key is null");
       }
 
-      var checkSum = this.CalculateCheckSum(input);
+      var result = this.CalculateCheckSum(input);
 
       this.SetValue(input,
                     key,
-                    checkSum);
+                    result);
 
-      return checkSum;
+      return result;
     }
 
     /// <summary>

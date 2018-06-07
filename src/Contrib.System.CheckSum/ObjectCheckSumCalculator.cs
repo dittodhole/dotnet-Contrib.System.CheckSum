@@ -76,7 +76,9 @@ namespace Contrib.System.CheckSum
         sortedDictionary[propertyInfo.Name] = part;
       }
 
-      return sortedDictionary.Values;
+      var result = sortedDictionary.Values;
+
+      return result;
     }
 
     /// <summary>
@@ -181,14 +183,19 @@ namespace Contrib.System.CheckSum
     /// <inheritdoc/>
     protected override bool IteratePropertyInfo(PropertyInfo propertyInfo)
     {
+      bool result;
       if (string.Equals(propertyInfo.Name,
                         this.CheckSumPropertyName,
                         StringComparison.Ordinal))
       {
-        return false;
+        result = false;
+      }
+      else
+      {
+        result = base.IteratePropertyInfo(propertyInfo);
       }
 
-      return base.IteratePropertyInfo(propertyInfo);
+      return result;
     }
 
     /// <inheritdoc/>
@@ -235,13 +242,16 @@ namespace Contrib.System.CheckSum
     protected virtual PropertyInfo GetPropertyInfo([NotNull] object obj,
                                                    [CanBeNull] string propertyName)
     {
+      PropertyInfo result;
       if (propertyName == null)
       {
-        return null;
+        result = null;
       }
-
-      var type = obj.GetType();
-      var result = type.GetProperty(propertyName);
+      else
+      {
+        var type = obj.GetType();
+        result = type.GetProperty(propertyName);
+      }
 
       return result;
     }
