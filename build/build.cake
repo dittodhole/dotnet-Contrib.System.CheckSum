@@ -76,8 +76,8 @@ Task("Version")
 
   GitVersion(new GitVersionSettings
              {
-               WorkingDirectory = sourceDirectory,
                UpdateAssemblyInfo = true,
+               UpdateAssemblyInfoFilePath = assemblyInfoFile,
                OutputType = GitVersionOutput.BuildServer
              });
 });
