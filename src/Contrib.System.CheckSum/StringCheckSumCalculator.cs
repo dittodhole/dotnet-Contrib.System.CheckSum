@@ -4,20 +4,10 @@
 namespace Contrib.System.CheckSum
 {
   using global::System;
+  using global::System.IO;
   using global::System.Security.Cryptography;
   using global::System.Text;
   using global::JetBrains.Annotations;
-
-  /// <summary>
-  ///   
-  /// </summary>
-  /// <exception cref="Exception"/>
-#if CONTRIB_SYSTEM_CHECKSUM
-  public
-#else
-  internal
-#endif
-  delegate HashAlgorithm HashAlgorithmFactory();
 
   /// <inheritdoc/>
 #if CONTRIB_SYSTEM_CHECKSUM
@@ -30,25 +20,19 @@ namespace Contrib.System.CheckSum
     /// <summary>
     ///   Initializes a new instance of the <see cref="StringCheckSumCalculator"/> class.
     /// </summary>
-    public StringCheckSumCalculator()
-      : this(MD5.Create) { }
-
-    /// <summary>
-    ///   Initializes a new instance of the <see cref="StringCheckSumCalculator"/> class.
-    /// </summary>
-    /// <param name="hashAlgorithmFactory"/>
-    /// <exception cref="ArgumentNullException"><paramref name="hashAlgorithmFactory"/> is <see langword="null"/>.</exception>
-    public StringCheckSumCalculator([NotNull] HashAlgorithmFactory hashAlgorithmFactory)
+    /// <param name="checkSumCalculator"/>
+    /// <exception cref="ArgumentNullException"><paramref name="checkSumCalculator"/> is <see langword="null"/>.</exception>
+    public StringCheckSumCalculator([NotNull] ICheckSumCalculator<Stream> checkSumCalculator)
     {
-      if (hashAlgorithmFactory == null)
+      if (checkSumCalculator == null)
       {
-        throw new ArgumentNullException("hashAlgorithmFactory");
+        throw new ArgumentNullException("checkSumCalculator");
       }
-      this._hashAlgorithmFactory = hashAlgorithmFactory;
+      this._checkSumCalculator = checkSumCalculator;
     }
 
     [NotNull]
-    private readonly HashAlgorithmFactory _hashAlgorithmFactory;
+    private readonly ICheckSumCalculator<Stream> _checkSumCalculator;
 
     /// <inheritdoc/>
     public virtual string CalculateCheckSum(string input)
@@ -58,26 +42,14 @@ namespace Contrib.System.CheckSum
         throw new ArgumentNullException("input");
       }
 
-      var bytes = this.GetBytes(input);
-      var checkSum = this.ComputeCheckSum(bytes);
+      string result;
 
-      var result = BitConverter.ToString(checkSum)
-                               .Replace("-", string.Empty);
-
-      return result;
-    }
-
-    /// <summary>
-    ///   Converts <paramref name="str"/> to <see cref="T:byte[]"/>.
-    /// </summary>
-    /// <param name="str"/>
-    /// <exception cref="Exception"/>
-    [Pure]
-    [NotNull]
-    protected virtual byte[] GetBytes([NotNull] string str)
-    {
       var encoding = this.GetEncoding();
-      var result = encoding.GetBytes(str);
+      var bytes = encoding.GetBytes(input);
+      using (var memoryStream = new MemoryStream(bytes))
+      {
+        result = this._checkSumCalculator.CalculateCheckSum(memoryStream);
+      }
 
       return result;
     }
@@ -91,24 +63,6 @@ namespace Contrib.System.CheckSum
     protected virtual Encoding GetEncoding()
     {
       var result = Encoding.UTF8;
-
-      return result;
-    }
-
-    /// <summary>
-    ///   Computes the check sum for <paramref name="buffer"/>.
-    /// </summary>
-    /// <param name="buffer"/>
-    /// <exception cref="Exception"/>
-    [Pure]
-    [NotNull]
-    protected virtual byte[] ComputeCheckSum([NotNull] byte[] buffer)
-    {
-      byte[] result;
-      using (var hashAlgorithm = this._hashAlgorithmFactory.Invoke())
-      {
-        result = hashAlgorithm.ComputeHash(buffer);
-      }
 
       return result;
     }
