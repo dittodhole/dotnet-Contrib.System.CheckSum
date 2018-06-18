@@ -5,7 +5,6 @@ namespace Contrib.System.CheckSum
 {
   using global::System;
   using global::System.IO;
-  using global::System.Security.Cryptography;
   using global::System.Text;
   using global::JetBrains.Annotations;
 
@@ -43,10 +42,7 @@ namespace Contrib.System.CheckSum
       }
 
       string result;
-
-      var encoding = this.GetEncoding();
-      var bytes = encoding.GetBytes(input);
-      using (var memoryStream = new MemoryStream(bytes))
+      using (var memoryStream = this.GetMemoryStream(input))
       {
         result = this._checkSumCalculator.CalculateCheckSum(memoryStream);
       }
@@ -55,14 +51,17 @@ namespace Contrib.System.CheckSum
     }
 
     /// <summary>
-    ///   Returns the encoding.
+    ///   Converts <paramref name="input"/> to <see cref="T:System.IO.MemoryStream"/>.
     /// </summary>
+    /// <param name="str"/>
     /// <exception cref="Exception"/>
     [Pure]
     [NotNull]
-    protected virtual Encoding GetEncoding()
+    protected virtual MemoryStream GetMemoryStream([NotNull] string str)
     {
-      var result = Encoding.UTF8;
+      var encoding = Encoding.UTF8;
+      var bytes = encoding.GetBytes(str);
+      var result = new MemoryStream(bytes);
 
       return result;
     }
