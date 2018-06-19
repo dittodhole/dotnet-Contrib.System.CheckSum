@@ -16,11 +16,15 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="CheckSumCalculator.cs" target="content\App_Packages\Source.Contrib.System.CheckSum_$version$\" />
     <file src="DictionaryCheckSumCalculator.cs" target="content\App_Packages\Source.Contrib.System.CheckSum_$version$\" />
+    <file src="DictionaryCheckSumCalculatorEx.cs" target="content\App_Packages\Source.Contrib.System.CheckSum_$version$\" />
+    <file src="ICheckSumCalculator.cs" target="content\App_Packages\Source.Contrib.System.CheckSum_$version$\" />
+    <file src="ICheckSumCalculatorEx.cs" target="content\App_Packages\Source.Contrib.System.CheckSum_$version$\" />
     <file src="ObjectCheckSumCalculator.cs" target="content\App_Packages\Source.Contrib.System.CheckSum_$version$\" />
+    <file src="ObjectCheckSumCalculatorEx.cs" target="content\App_Packages\Source.Contrib.System.CheckSum_$version$\" />
     <file src="SequenceCheckSumCalculator.cs" target="content\App_Packages\Source.Contrib.System.CheckSum_$version$\" />
     <file src="SequenceMultiCheckSumCalculator.cs" target="content\App_Packages\Source.Contrib.System.CheckSum_$version$\" />
+    <file src="StreamCheckSumCalculator.cs" target="content\App_Packages\Source.Contrib.System.CheckSum_$version$\" />
     <file src="StringCheckSumCalculator.cs" target="content\App_Packages\Source.Contrib.System.CheckSum_$version$\" />
   </files>
 </package>
