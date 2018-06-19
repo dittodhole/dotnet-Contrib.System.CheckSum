@@ -8,10 +8,7 @@ namespace Contrib.System.CheckSum
   using global::System.Security.Cryptography;
   using global::JetBrains.Annotations;
 
-  /// <summary>
-  ///
-  /// </summary>
-  /// <exception cref="Exception"/>
+  /// <exception cref="T:System.Exception"/>
 #if CONTRIB_SYSTEM_CHECKSUM
   public
 #else
@@ -29,7 +26,7 @@ namespace Contrib.System.CheckSum
   partial class StreamCheckSumCalculator : ICheckSumCalculator<Stream>
   {
     /// <summary>
-    ///   Initializes a new instance of the <see cref="StreamCheckSumCalculator"/> class.
+    ///   Initializes a new instance of the <see cref="T:Contrib.System.CheckSum.StreamCheckSumCalculator"/> class.
     /// </summary>
     public StreamCheckSumCalculator()
     {
@@ -37,10 +34,10 @@ namespace Contrib.System.CheckSum
     }
 
     /// <summary>
-    ///   Initializes a new instance of the <see cref="StreamCheckSumCalculator"/> class.
+    ///   Initializes a new instance of the <see cref="T:Contrib.System.CheckSum.StreamCheckSumCalculator"/> class.
     /// </summary>
     /// <param name="hashAlgorithmFactory"/>
-    /// <exception cref="ArgumentNullException"><paramref name="hashAlgorithmFactory"/> is <see langword="null"/>.</exception>
+    /// <exception cref="T:System.ArgumentNullException"><paramref name="hashAlgorithmFactory"/> is <see langword="null"/>.</exception>
     public StreamCheckSumCalculator([NotNull] HashAlgorithmFactory hashAlgorithmFactory)
     {
       if (hashAlgorithmFactory == null)

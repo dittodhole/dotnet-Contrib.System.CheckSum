@@ -19,7 +19,7 @@ namespace Contrib.System.CheckSum
   partial class ObjectCheckSumCalculator : ICheckSumCalculator<object>
   {
     /// <summary>
-    ///   Initializes a new instance of the <see cref="ObjectCheckSumCalculator"/> class.
+    ///   Initializes a new instance of the <see cref="T:Contrib.System.CheckSum.ObjectCheckSumCalculator"/> class.
     /// </summary>
     public ObjectCheckSumCalculator()
     {
@@ -27,10 +27,10 @@ namespace Contrib.System.CheckSum
     }
 
     /// <summary>
-    ///   Initializes a new instance of the <see cref="ObjectCheckSumCalculator"/> class.
+    ///   Initializes a new instance of the <see cref="T:Contrib.System.CheckSum.ObjectCheckSumCalculator"/> class.
     /// </summary>
     /// <param name="checkSumCalculator"/>
-    /// <exception cref="ArgumentNullException"><paramref name="checkSumCalculator"/> is <see langword="null"/>.</exception>
+    /// <exception cref="T:System.ArgumentNullException"><paramref name="checkSumCalculator"/> is <see langword="null"/>.</exception>
     public ObjectCheckSumCalculator([NotNull] ICheckSumCalculator<IEnumerable> checkSumCalculator)
     {
       if (checkSumCalculator == null)
@@ -58,10 +58,10 @@ namespace Contrib.System.CheckSum
     }
 
     /// <summary>
-    ///   Converts <paramref name="obj"/> to <see cref="IEnumerable"/>.
+    ///   Converts <paramref name="obj"/> to <see cref="T:System.Collections.IEnumerable"/>.
     /// </summary>
     /// <param name="obj"/>
-    /// <exception cref="Exception"/>
+    /// <exception cref="T:System.Exception"/>
     [Pure]
     [NotNull]
     protected virtual IEnumerable GetSequence([NotNull] object obj)
@@ -90,10 +90,10 @@ namespace Contrib.System.CheckSum
     }
 
     /// <summary>
-    ///   Returns all <see cref="PropertyInfo"/> classes for <paramref name="obj"/>.
+    ///   Returns all <see cref="T:System.Reflection.PropertyInfo"/> classes for <paramref name="obj"/>.
     /// </summary>
     /// <param name="obj"/>
-    /// <exception cref="Exception"/>
+    /// <exception cref="T:System.Exception"/>
     [Pure]
     [NotNull]
     [ItemNotNull]
@@ -106,10 +106,10 @@ namespace Contrib.System.CheckSum
     }
 
     /// <summary>
-    ///   Indicates if <paramref name="propertyInfo"/> should be iterated in <see cref="ObjectCheckSumCalculator.GetSequence"/>.
+    ///   Indicates if <paramref name="propertyInfo"/> should be iterated in <see cref="M:Contrib.System.CheckSum.ObjectCheckSumCalculator.GetSequence(System.Object)"/>.
     /// </summary>
     /// <param name="propertyInfo"/>
-    /// <exception cref="Exception"/>
+    /// <exception cref="T:System.Exception"/>
     [Pure]
     protected virtual bool IteratePropertyInfo([NotNull] PropertyInfo propertyInfo)
     {
@@ -123,7 +123,7 @@ namespace Contrib.System.CheckSum
     /// </summary>
     /// <param name="obj"/>
     /// <param name="propertyInfo"/>
-    /// <exception cref="Exception"/>
+    /// <exception cref="T:System.Exception"/>
     [Pure]
     [CanBeNull]
     protected virtual object GetValue([NotNull] object obj,
@@ -150,7 +150,7 @@ namespace Contrib.System.CheckSum
     /// </summary>
     /// <param name="propertyInfo"/>
     /// <param name="value"/>
-    /// <exception cref="Exception"/>
+    /// <exception cref="T:System.Exception"/>
     [Pure]
     [NotNull]
     protected virtual string GetPart([NotNull] PropertyInfo propertyInfo,

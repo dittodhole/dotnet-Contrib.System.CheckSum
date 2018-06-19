@@ -3,12 +3,8 @@
  */
 namespace Contrib.System.CheckSum
 {
-  using global::System;
   using global::JetBrains.Annotations;
 
-  /// <summary>
-  ///
-  /// </summary>
   /// <typeparam name="T"/>
   [PublicAPI]
 #if CONTRIB_SYSTEM_CHECKSUM
@@ -22,8 +18,8 @@ namespace Contrib.System.CheckSum
     ///   Returns the stored check sum of <paramref name="input"/>.
     /// </summary>
     /// <param name="input"/>
-    /// <exception cref="ArgumentNullException"><paramref name="input"/> is <see langword="null" />.</exception>
-    /// <exception cref="Exception"/>
+    /// <exception cref="T:System.ArgumentNullException"><paramref name="input"/> is <see langword="null" />.</exception>
+    /// <exception cref="T:System.Exception"/>
     [Pure]
     [CanBeNull]
     string GetStoredCheckSum([NotNull] T input);
@@ -32,8 +28,8 @@ namespace Contrib.System.CheckSum
     ///   Calculates the check sum of <paramref name="input"/> and stores it.
     /// </summary>
     /// <param name="input"/>
-    /// <exception cref="ArgumentNullException"><paramref name="input"/> is <see langword="null" />.</exception>
-    /// <exception cref="Exception"/>
+    /// <exception cref="T:System.ArgumentNullException"><paramref name="input"/> is <see langword="null" />.</exception>
+    /// <exception cref="T:System.Exception"/>
     [NotNull]
     string CalculateAndStoreCheckSum([NotNull] T input);
 
@@ -41,8 +37,8 @@ namespace Contrib.System.CheckSum
     ///   Validates the stored check sum of <paramref name="input"/>.
     /// </summary>
     /// <param name="input"/>
-    /// <exception cref="ArgumentNullException"><paramref name="input"/> is <see langword="null" />.</exception>
-    /// <exception cref="Exception"/>
+    /// <exception cref="T:System.ArgumentNullException"><paramref name="input"/> is <see langword="null" />.</exception>
+    /// <exception cref="T:System.Exception"/>
     [Pure]
     bool IsStoredCheckSumValid([NotNull] T input);
   }

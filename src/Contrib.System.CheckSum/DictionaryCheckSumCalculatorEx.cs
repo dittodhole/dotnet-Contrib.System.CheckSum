@@ -7,7 +7,7 @@ namespace Contrib.System.CheckSum
   using global::System.Collections;
   using global::JetBrains.Annotations;
 
-  /// <inheritdoc cref="ICheckSumCalculatorEx{T}"/>
+  /// <inheritdoc cref="T:Contrib.System.CheckSum.ICheckSumCalculatorEx{T}"/>
   [PublicAPI]
 #if CONTRIB_SYSTEM_CHECKSUM
   public
@@ -18,23 +18,23 @@ namespace Contrib.System.CheckSum
                                                  ICheckSumCalculatorEx<IDictionary>
   {
     /// <summary>
-    ///   Initializes a new instance of the <see cref="DictionaryCheckSumCalculatorEx"/> class.
+    ///   Initializes a new instance of the <see cref="T:Contrib.System.CheckSum.DictionaryCheckSumCalculatorEx"/> class.
     /// </summary>
     public DictionaryCheckSumCalculatorEx()
       : base() { }
 
     /// <summary>
-    ///   Initializes a new instance of the <see cref="DictionaryCheckSumCalculatorEx"/> class.
+    ///   Initializes a new instance of the <see cref="T:Contrib.System.CheckSum.DictionaryCheckSumCalculatorEx"/> class.
     /// </summary>
     /// <param name="checkSumCalculator"/>
-    /// <exception cref="ArgumentNullException"><paramref name="checkSumCalculator"/> is <see langword="null"/>.</exception>
+    /// <exception cref="T:System.ArgumentNullException"><paramref name="checkSumCalculator"/> is <see langword="null"/>.</exception>
     public DictionaryCheckSumCalculatorEx([NotNull] ICheckSumCalculator<IEnumerable> checkSumCalculator)
       : base(checkSumCalculator) { }
 
     /// <summary>
     ///   Gets or sets the key for check sum storage.
     /// </summary>
-    /// <seealso cref="DictionaryCheckSumCalculatorEx.IterateKey"/>
+    /// <seealso cref="M:Contrib.System.CheckSum.DictionaryCheckSumCalculatorEx.IterateKey(System.Object)"/>
     [CanBeNull]
     public virtual object CheckSumKey { get; set; }
 
@@ -113,7 +113,7 @@ namespace Contrib.System.CheckSum
     /// <param name="input"/>
     /// <param name="key"/>
     /// <param name="value"/>
-    /// <exception cref="Exception"/>
+    /// <exception cref="T:System.Exception"/>
     protected virtual void SetValue([NotNull] IDictionary input,
                                     [NotNull] object key,
                                     [CanBeNull] object value)

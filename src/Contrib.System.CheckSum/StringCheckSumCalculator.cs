@@ -18,7 +18,7 @@ namespace Contrib.System.CheckSum
   partial class StringCheckSumCalculator : ICheckSumCalculator<string>
   {
     /// <summary>
-    ///   Initializes a new instance of the <see cref="StringCheckSumCalculator"/> class.
+    ///   Initializes a new instance of the <see cref="T:Contrib.System.CheckSum.StringCheckSumCalculator"/> class.
     /// </summary>
     public StringCheckSumCalculator()
     {
@@ -26,10 +26,10 @@ namespace Contrib.System.CheckSum
     }
 
     /// <summary>
-    ///   Initializes a new instance of the <see cref="StringCheckSumCalculator"/> class.
+    ///   Initializes a new instance of the <see cref="T:Contrib.System.CheckSum.StringCheckSumCalculator"/> class.
     /// </summary>
     /// <param name="checkSumCalculator"/>
-    /// <exception cref="ArgumentNullException"><paramref name="checkSumCalculator"/> is <see langword="null"/>.</exception>
+    /// <exception cref="T:System.ArgumentNullException"><paramref name="checkSumCalculator"/> is <see langword="null"/>.</exception>
     public StringCheckSumCalculator([NotNull] ICheckSumCalculator<Stream> checkSumCalculator)
     {
       if (checkSumCalculator == null)
@@ -63,7 +63,7 @@ namespace Contrib.System.CheckSum
     ///   Converts <paramref name="str"/> to <see cref="T:System.IO.MemoryStream"/>.
     /// </summary>
     /// <param name="str"/>
-    /// <exception cref="Exception"/>
+    /// <exception cref="T:System.Exception"/>
     [Pure]
     [NotNull]
     protected virtual MemoryStream GetMemoryStream([NotNull] string str)

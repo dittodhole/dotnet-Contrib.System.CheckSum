@@ -8,7 +8,7 @@ namespace Contrib.System.CheckSum
   using global::System.Reflection;
   using global::JetBrains.Annotations;
 
-  /// <inheritdoc cref="ICheckSumCalculatorEx{T}"/>
+  /// <inheritdoc cref="T:Contrib.System.CheckSum.ICheckSumCalculatorEx{T}"/>
   [PublicAPI]
 #if CONTRIB_SYSTEM_CHECKSUM
   public
@@ -19,23 +19,23 @@ namespace Contrib.System.CheckSum
                                              ICheckSumCalculatorEx<object>
   {
     /// <summary>
-    ///   Initializes a new instance of the <see cref="ObjectCheckSumCalculatorEx"/> class.
+    ///   Initializes a new instance of the <see cref="T:Contrib.System.CheckSum.ObjectCheckSumCalculatorEx"/> class.
     /// </summary>
     public ObjectCheckSumCalculatorEx()
       : base() { }
 
     /// <summary>
-    ///   Initializes a new instance of the <see cref="ObjectCheckSumCalculatorEx"/> class.
+    ///   Initializes a new instance of the <see cref="T:Contrib.System.CheckSum.ObjectCheckSumCalculatorEx"/> class.
     /// </summary>
     /// <param name="checkSumCalculator"/>
-    /// <exception cref="ArgumentNullException"><paramref name="checkSumCalculator"/> is <see langword="null"/>.</exception>
+    /// <exception cref="T:System.ArgumentNullException"><paramref name="checkSumCalculator"/> is <see langword="null"/>.</exception>
     public ObjectCheckSumCalculatorEx([NotNull] ICheckSumCalculator<IEnumerable> checkSumCalculator)
       : base(checkSumCalculator) { }
 
     /// <summary>
     ///   Gets or sets the property for check sum storage.
     /// </summary>
-    /// <seealso cref="ObjectCheckSumCalculatorEx.IteratePropertyInfo"/>
+    /// <seealso cref="M:Contrib.System.CheckSum.ObjectCheckSumCalculatorEx.IteratePropertyInfo(System.Reflection.PropertyInfo)"/>
     [CanBeNull]
     public virtual string CheckSumPropertyName { get; set; }
 
@@ -95,7 +95,7 @@ namespace Contrib.System.CheckSum
     /// </summary>
     /// <param name="obj"/>
     /// <param name="propertyName"/>
-    /// <exception cref="Exception"/>
+    /// <exception cref="T:System.Exception"/>
     [Pure]
     [CanBeNull]
     protected virtual PropertyInfo GetPropertyInfo([NotNull] object obj,
@@ -150,7 +150,7 @@ namespace Contrib.System.CheckSum
     /// <param name="obj"/>
     /// <param name="propertyInfo"/>
     /// <param name="value"/>
-    /// <exception cref="Exception"/>
+    /// <exception cref="T:System.Exception"/>
     protected virtual void SetValue([NotNull] object obj,
                                     [NotNull] PropertyInfo propertyInfo,
                                     [CanBeNull] object value)

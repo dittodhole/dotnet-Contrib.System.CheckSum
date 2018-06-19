@@ -18,7 +18,7 @@ namespace Contrib.System.CheckSum
   partial class SequenceCheckSumCalculator : ICheckSumCalculator<IEnumerable>
   {
     /// <summary>
-    ///   Initializes a new instance of the <see cref="SequenceCheckSumCalculator"/> class.
+    ///   Initializes a new instance of the <see cref="T:Contrib.System.CheckSum.SequenceCheckSumCalculator"/> class.
     /// </summary>
     public SequenceCheckSumCalculator()
     {
@@ -26,10 +26,10 @@ namespace Contrib.System.CheckSum
     }
 
     /// <summary>
-    ///   Initializes a new instance of the <see cref="SequenceCheckSumCalculator"/> class.
+    ///   Initializes a new instance of the <see cref="T:Contrib.System.CheckSum.SequenceCheckSumCalculator"/> class.
     /// </summary>
     /// <param name="checkSumCalculator"/>
-    /// <exception cref="ArgumentNullException"><paramref name="checkSumCalculator"/> is <see langword="null"/>.</exception>
+    /// <exception cref="T:System.ArgumentNullException"><paramref name="checkSumCalculator"/> is <see langword="null"/>.</exception>
     public SequenceCheckSumCalculator([NotNull] ICheckSumCalculator<string> checkSumCalculator)
     {
       if (checkSumCalculator == null)
@@ -57,10 +57,10 @@ namespace Contrib.System.CheckSum
     }
 
     /// <summary>
-    ///   Converts <paramref name="sequence"/> to <see cref="string"/>.
+    ///   Converts <paramref name="sequence"/> to <see cref="T:System.String"/>.
     /// </summary>
     /// <param name="sequence"/>
-    /// <exception cref="Exception"/>
+    /// <exception cref="T:System.Exception"/>
     [Pure]
     [NotNull]
     protected virtual string GetString([NotNull] [InstantHandle] IEnumerable sequence)

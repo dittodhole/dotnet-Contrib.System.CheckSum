@@ -9,6 +9,7 @@ namespace Contrib.System.CheckSum
   using global::JetBrains.Annotations;
 
   /// <inheritdoc/>
+  [PublicAPI]
 #if CONTRIB_SYSTEM_CHECKSUM
   public
 #else
@@ -17,7 +18,7 @@ namespace Contrib.System.CheckSum
   partial class DictionaryCheckSumCalculator : ICheckSumCalculator<IDictionary>
   {
     /// <summary>
-    ///   Initializes a new instance of the <see cref="DictionaryCheckSumCalculator"/> class.
+    ///   Initializes a new instance of the <see cref="T:Contrib.System.CheckSum.DictionaryCheckSumCalculator"/> class.
     /// </summary>
     public DictionaryCheckSumCalculator()
     {
@@ -25,10 +26,10 @@ namespace Contrib.System.CheckSum
     }
 
     /// <summary>
-    ///   Initializes a new instance of the <see cref="DictionaryCheckSumCalculator"/> class.
+    ///   Initializes a new instance of the <see cref="T:Contrib.System.CheckSum.DictionaryCheckSumCalculator"/> class.
     /// </summary>
     /// <param name="checkSumCalculator"/>
-    /// <exception cref="ArgumentNullException"><paramref name="checkSumCalculator"/> is <see langword="null"/>.</exception>
+    /// <exception cref="T:System.ArgumentNullException"><paramref name="checkSumCalculator"/> is <see langword="null"/>.</exception>
     public DictionaryCheckSumCalculator([NotNull] ICheckSumCalculator<IEnumerable> checkSumCalculator)
     {
       if (checkSumCalculator == null)
@@ -56,10 +57,10 @@ namespace Contrib.System.CheckSum
     }
 
     /// <summary>
-    ///   Converts <paramref name="dictionary"/> to <see cref="IEnumerable"/>.
+    ///   Converts <paramref name="dictionary"/> to <see cref="T:System.Collections.IEnumerable"/>.
     /// </summary>
     /// <param name="dictionary"/>
-    /// <exception cref="Exception"/>
+    /// <exception cref="T:System.Exception"/>
     [NotNull]
     protected virtual IEnumerable GetSequence([NotNull] IDictionary dictionary)
     {
@@ -86,10 +87,10 @@ namespace Contrib.System.CheckSum
     }
 
     /// <summary>
-    ///   Indicates if <paramref name="key"/> should be iterated in <see cref="DictionaryCheckSumCalculator.GetSequence"/>.
+    ///   Indicates if <paramref name="key"/> should be iterated in <see cref="T:Contrib.System.CheckSum.DictionaryCheckSumCalculator.GetSequence"/>.
     /// </summary>
     /// <param name="key"/>
-    /// <exception cref="Exception"/>
+    /// <exception cref="T:System.Exception"/>
     [Pure]
     protected virtual bool IterateKey([NotNull] object key)
     {
@@ -103,7 +104,7 @@ namespace Contrib.System.CheckSum
     /// </summary>
     /// <param name="dictionary"/>
     /// <param name="key"/>
-    /// <exception cref="Exception"/>
+    /// <exception cref="T:System.Exception"/>
     [Pure]
     [CanBeNull]
     protected virtual object GetValue([NotNull] IDictionary dictionary,
@@ -127,7 +128,7 @@ namespace Contrib.System.CheckSum
     /// </summary>
     /// <param name="key"/>
     /// <param name="value"/>
-    /// <exception cref="Exception"/>
+    /// <exception cref="T:System.Exception"/>
     [Pure]
     [NotNull]
     protected virtual string GetPart([NotNull] object key,

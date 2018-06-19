@@ -17,7 +17,7 @@ namespace Contrib.System.CheckSum
   partial class SequenceMultiCheckSumCalculator : ICheckSumCalculator<IEnumerable>
   {
     /// <summary>
-    ///   Initializes a new instance of the <see cref="SequenceMultiCheckSumCalculator"/> class.
+    ///   Initializes a new instance of the <see cref="T:Contrib.System.CheckSum.SequenceMultiCheckSumCalculator"/> class.
     /// </summary>
     public SequenceMultiCheckSumCalculator()
     {
@@ -25,10 +25,10 @@ namespace Contrib.System.CheckSum
     }
 
     /// <summary>
-    ///   Initializes a new instance of the <see cref="SequenceMultiCheckSumCalculator"/> class.
+    ///   Initializes a new instance of the <see cref="T:Contrib.System.CheckSum.SequenceMultiCheckSumCalculator"/> class.
     /// </summary>
     /// <param name="checkSumCalculator"/>
-    /// <exception cref="ArgumentNullException"><paramref name="checkSumCalculator"/> is <see langword="null"/>.</exception>
+    /// <exception cref="T:System.ArgumentNullException"><paramref name="checkSumCalculator"/> is <see langword="null"/>.</exception>
     public SequenceMultiCheckSumCalculator([NotNull] ICheckSumCalculator<string> checkSumCalculator)
     {
       if (checkSumCalculator == null)
