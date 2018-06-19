@@ -8,6 +8,7 @@ namespace Contrib.System.CheckSum
   using global::JetBrains.Annotations;
 
   /// <inheritdoc cref="ICheckSumCalculatorEx{T}"/>
+  [PublicAPI]
 #if CONTRIB_SYSTEM_CHECKSUM
   public
 #else
@@ -16,6 +17,12 @@ namespace Contrib.System.CheckSum
   partial class DictionaryCheckSumCalculatorEx : DictionaryCheckSumCalculator,
                                                  ICheckSumCalculatorEx<IDictionary>
   {
+    /// <summary>
+    ///   Initializes a new instance of the <see cref="DictionaryCheckSumCalculatorEx"/> class.
+    /// </summary>
+    public DictionaryCheckSumCalculatorEx()
+      : base() { }
+
     /// <summary>
     ///   Initializes a new instance of the <see cref="DictionaryCheckSumCalculatorEx"/> class.
     /// </summary>
