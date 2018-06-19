@@ -68,8 +68,7 @@ namespace Contrib.System.CheckSum
     {
       var sortedDictionary = new SortedDictionary<string, object>(StringComparer.Ordinal);
 
-      var propertyInfos = this.GetPropertyInfos(obj);
-      foreach (var propertyInfo in propertyInfos)
+      foreach (var propertyInfo in this.GetPropertyInfos(obj))
       {
         if (!this.IteratePropertyInfo(propertyInfo))
         {
