@@ -61,6 +61,7 @@ namespace Contrib.System.CheckSum
     /// </summary>
     /// <param name="dictionary"/>
     /// <exception cref="T:System.Exception"/>
+    [Pure]
     [NotNull]
     protected virtual IEnumerable GetSequence([NotNull] IDictionary dictionary)
     {
