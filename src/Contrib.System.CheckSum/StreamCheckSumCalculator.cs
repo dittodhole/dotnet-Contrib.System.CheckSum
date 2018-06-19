@@ -9,7 +9,7 @@ namespace Contrib.System.CheckSum
   using global::JetBrains.Annotations;
 
   /// <summary>
-  ///   
+  ///
   /// </summary>
   /// <exception cref="Exception"/>
 #if CONTRIB_SYSTEM_CHECKSUM
@@ -20,6 +20,7 @@ namespace Contrib.System.CheckSum
   delegate HashAlgorithm HashAlgorithmFactory();
 
   /// <inheritdoc/>
+  [PublicAPI]
 #if CONTRIB_SYSTEM_CHECKSUM
   public
 #else
@@ -31,7 +32,9 @@ namespace Contrib.System.CheckSum
     ///   Initializes a new instance of the <see cref="StreamCheckSumCalculator"/> class.
     /// </summary>
     public StreamCheckSumCalculator()
-      : this(MD5.Create) { }
+    {
+      this._hashAlgorithmFactory = MD5.Create;
+    }
 
     /// <summary>
     ///   Initializes a new instance of the <see cref="StreamCheckSumCalculator"/> class.

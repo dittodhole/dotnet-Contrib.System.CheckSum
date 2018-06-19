@@ -9,6 +9,7 @@ namespace Contrib.System.CheckSum
   using global::JetBrains.Annotations;
 
   /// <inheritdoc/>
+  [PublicAPI]
 #if CONTRIB_SYSTEM_CHECKSUM
   public
 #else
@@ -16,6 +17,14 @@ namespace Contrib.System.CheckSum
 #endif
   partial class StringCheckSumCalculator : ICheckSumCalculator<string>
   {
+    /// <summary>
+    ///   Initializes a new instance of the <see cref="StringCheckSumCalculator"/> class.
+    /// </summary>
+    public StringCheckSumCalculator()
+    {
+      this._checkSumCalculator = new StreamCheckSumCalculator();
+    }
+
     /// <summary>
     ///   Initializes a new instance of the <see cref="StringCheckSumCalculator"/> class.
     /// </summary>
@@ -51,7 +60,7 @@ namespace Contrib.System.CheckSum
     }
 
     /// <summary>
-    ///   Converts <paramref name="input"/> to <see cref="T:System.IO.MemoryStream"/>.
+    ///   Converts <paramref name="str"/> to <see cref="T:System.IO.MemoryStream"/>.
     /// </summary>
     /// <param name="str"/>
     /// <exception cref="Exception"/>

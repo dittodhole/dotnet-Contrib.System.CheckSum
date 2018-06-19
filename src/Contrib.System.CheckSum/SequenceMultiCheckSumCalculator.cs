@@ -8,6 +8,7 @@ namespace Contrib.System.CheckSum
   using global::JetBrains.Annotations;
 
   /// <inheritdoc/>
+  [PublicAPI]
 #if CONTRIB_SYSTEM_CHECKSUM
   public
 #else
@@ -15,6 +16,14 @@ namespace Contrib.System.CheckSum
 #endif
   partial class SequenceMultiCheckSumCalculator : ICheckSumCalculator<IEnumerable>
   {
+    /// <summary>
+    ///   Initializes a new instance of the <see cref="SequenceMultiCheckSumCalculator"/> class.
+    /// </summary>
+    public SequenceMultiCheckSumCalculator()
+    {
+      this._checkSumCalculator = new StringCheckSumCalculator();
+    }
+
     /// <summary>
     ///   Initializes a new instance of the <see cref="SequenceMultiCheckSumCalculator"/> class.
     /// </summary>
@@ -33,7 +42,7 @@ namespace Contrib.System.CheckSum
     private readonly ICheckSumCalculator<string> _checkSumCalculator;
 
     /// <inheritdoc/>
-    public virtual string CalculateCheckSum(IEnumerable input)
+    public virtual string CalculateCheckSum([InstantHandle] IEnumerable input)
     {
       if (input == null)
       {

@@ -9,6 +9,7 @@ namespace Contrib.System.CheckSum
   using global::JetBrains.Annotations;
 
   /// <inheritdoc/>
+  [PublicAPI]
 #if CONTRIB_SYSTEM_CHECKSUM
   public
 #else
@@ -16,6 +17,14 @@ namespace Contrib.System.CheckSum
 #endif
   partial class SequenceCheckSumCalculator : ICheckSumCalculator<IEnumerable>
   {
+    /// <summary>
+    ///   Initializes a new instance of the <see cref="SequenceCheckSumCalculator"/> class.
+    /// </summary>
+    public SequenceCheckSumCalculator()
+    {
+      this._checkSumCalculator = new StringCheckSumCalculator();
+    }
+
     /// <summary>
     ///   Initializes a new instance of the <see cref="SequenceCheckSumCalculator"/> class.
     /// </summary>
@@ -54,7 +63,7 @@ namespace Contrib.System.CheckSum
     /// <exception cref="Exception"/>
     [Pure]
     [NotNull]
-    protected virtual string GetString([NotNull] IEnumerable sequence)
+    protected virtual string GetString([NotNull] [InstantHandle] IEnumerable sequence)
     {
       var stringBuilder = new StringBuilder();
 
